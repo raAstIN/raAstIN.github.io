@@ -113,14 +113,14 @@ const pages = document.querySelectorAll("[data-page]");
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+    for (let j = 0; j < pages.length; j++) {
+      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
+        pages[j].classList.add("active");
+        navigationLinks[i].classList.add("active"); // 'i' is correct here for the clicked link
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        pages[j].classList.remove("active");
+        navigationLinks[j].classList.remove("active");
       }
     }
   });
@@ -184,37 +184,20 @@ form.addEventListener('submit', function (event) {
   .catch(error => console.error('Error:', error));
 });
 
-
 // Language selection popup
 document.addEventListener('DOMContentLoaded', () => {
   const languagePopup = document.querySelector('[data-language-popup]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
   const enBtn = document.querySelector('[data-lang-btn="en"]');
-  const currentLang = localStorage.getItem('language');
-  const isEnglishPage = window.location.pathname.includes('/en/');
-
-  if (!currentLang) {
-    if (isEnglishPage) {
-      window.location.replace('/');
-    } else {
-      languagePopup.classList.add('active');
-    }
-  } else if (currentLang === 'en' && !isEnglishPage) {
-    window.location.replace('/en/');
-  } else if (currentLang === 'fa' && isEnglishPage) {
-    window.location.replace('/');
-  }
 
   if (faBtn) {
     faBtn.addEventListener('click', () => {
-      localStorage.setItem('language', 'fa');
       languagePopup.classList.remove('active');
     });
   }
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
-      localStorage.setItem('language', 'en');
       window.location.href = '/en/';
     });
   }
