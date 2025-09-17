@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -23,130 +23,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-
-  <style>
-    /*-----------------------------------*\
-      #LANGUAGE MODAL
-    \*-----------------------------------*/
-
-    .language-modal-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      pointer-events: none;
-      opacity: 0;
-      transition: var(--transition-2);
-    }
-
-    .language-modal-container.active {
-      pointer-events: all;
-      opacity: 1;
-    }
-
-    .language-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: hsla(0, 0%, 5%, 0.5);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      z-index: 1;
-    }
-
-    .language-modal {
-      background: var(--bg-gradient-onyx);
-      position: relative;
-      max-width: 500px;
-      width: calc(100% - 40px);
-      margin: auto;
-      padding: 30px;
-      border-radius: var(--border-radius-md);
-      box-shadow: var(--shadow-5);
-      z-index: 2;
-      text-align: center;
-    }
-
-    .language-modal-title {
-      color: var(--white-2);
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .language-modal-title .separator-pipe {
-      color: var(--orange-yellow-crayola);
-      margin: 0 5px;
-    }
-
-    .language-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .language-buttons .form-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 130px;
-      justify-content: center;
-    }
-
-    .lang-emoji {
-      font-size: 20px;
-    }
-
-    [dir="ltr"] .article-title,
-    [dir="ltr"] .service-title,
-    [dir="ltr"] .clients-title,
-    [dir="ltr"] .skills-title,
-    [dir="ltr"] .h3,
-    [dir="ltr"] .h4,
-    [dir="ltr"] .h5,
-    [dir="ltr"] .contact-title,
-    [dir="ltr"] .form-title,
-    [dir="ltr"] .project-title,
-    [dir="ltr"] .blog-item-title {
-      text-align: left;
-    }
-
-    [dir="ltr"] .about-text,
-    [dir="ltr"] .service-item-text,
-    [dir="ltr"] .timeline-text,
-    [dir="ltr"] .contact-info,
-    [dir="ltr"] .blog-text {
-      text-align: left;
-    }
-
-    [dir="ltr"] .navbar-list {
-      gap: 20px;
-    }
-
-    [dir="ltr"] .timeline-item::before {
-      left: -30px;
-      right: auto;
-    }
-
-    [dir="ltr"] .timeline-list {
-      margin-left: 65px;
-      margin-right: 0;
-    }
-
-    [dir="ltr"] .project-category {
-      text-align: center;
-    }
-
-  </style>
 </head>
 
 <body>
+
+  <!--
+    - #LANGUAGE POPUP
+  -->
+  <div class="language-popup-container" data-language-popup>
+    <div class="language-popup-overlay" data-language-overlay></div>
+
+    <div class="language-popup">
+      <div class="language-popup-content">
+        <h3 class="h3">
+          لطفا زبان موردنظر خود را انتخاب کنید
+          <br>
+          Please select your preferred language
+        </h3>
+
+        <div class="language-buttons">
+          <button class="language-btn" data-lang-btn="fa">
+            <span>🇮🇷</span>
+            فارسی
+          </button>
+          <button class="language-btn" data-lang-btn="en">
+            <span>🇬🇧</span>
+            English
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--
     - #MAIN
@@ -154,29 +61,6 @@
 
   <main>
 
-    <!--
-      - #LANGUAGE MODAL
-    -->
-    <div class="language-modal-container active" data-language-modal-container>
-      <div class="language-overlay" data-language-overlay></div>
-      <section class="language-modal">
-        <h3 class="h3 language-modal-title" dir="rtl">
-          لطفا زبان موردنظر خود را انتخاب کنید.
-          <span class="separator-pipe">|</span>
-          <span dir="ltr">Please select your preferred language.</span>
-        </h3>
-        <div class="language-buttons">
-          <button class="form-btn" data-lang-btn="fa">
-            <span class="lang-emoji">🇮🇷</span>
-            <span>فارسی</span>
-          </button>
-          <button class="form-btn" data-lang-btn="en">
-            <span class="lang-emoji">🇬🇧</span>
-            <span>English</span>
-          </button>
-        </div>
-      </section>
-    </div>
     <!--
       - #SIDEBAR
     -->
@@ -190,13 +74,13 @@
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="راستین علیزاده" data-translate-key="sidebar_name"><b>راسـتـیـن عـلـیـزاده</b></h1>
+          <h1 class="name" title="Richard hanrick"><b>راسـتـیـن عـلـیـزاده</b></h1>
 
-          <p class="title" data-translate-key="sidebar_title">برنامه نویس ، طراح و تولیدکننده محتوا</p>
+          <p class="title">برنامه نویس ، طراح و تولیدکننده محتوا</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
-          <span data-translate-key="sidebar_show_contacts">نمایش اطلاعات</span>
+          <span>نمایش اطلاعات</span>
 
           <ion-icon name="chevron-down"></ion-icon>
         </button>
@@ -216,7 +100,7 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title" data-translate-key="sidebar_email_title">پست الکترونیکی من</p>
+              <p class="contact-title">پست الکترونیکی من</p>
 
               <a href="mailto:therealseyed@gmail.com" class="contact-link">therealseyed@gmail.com</a>
             </div>
@@ -230,7 +114,7 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title" data-translate-key="sidebar_phone_title">شماره تلفن من</p>
+              <p class="contact-title">شماره تلفن من</p>
 
               <a href="tel:+989333006301" class="contact-link">+۹۸ ۹۳۳ ۳۰۰ ۶۳۰۱</a>
             </div>
@@ -244,9 +128,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title" data-translate-key="sidebar_birthday_title">تاریخ تولد من</p>
+              <p class="contact-title">تاریخ تولد من</p>
 
-              <time datetime="2007-06-23" data-translate-key="sidebar_birthday_value">خرداد ۱۳۸۶</time>
+              <time datetime="1982-06-23">خرداد ۱۳۸۶</time>
             </div>
 
           </li>
@@ -258,9 +142,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title" data-translate-key="sidebar_location_title">محل زندگی من</p>
+              <p class="contact-title">محل زندگی من</p>
 
-              <address data-translate-key="sidebar_location_value">ایران ، شهر کاشان</address>
+              <address>ایران ، شهر کاشان</address>
             </div>
 
           </li>
@@ -309,28 +193,28 @@
         - #NAVBAR
       -->
 
-      <nav class="navbar">
+      <nav class="navbar" dir="rtl" align="right">
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link data-translate-key="nav_about">من کی ام؟</button>
+            <button class="navbar-link  active" data-nav-link>من کی ام؟</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-translate-key="nav_resume">رزومه</button>
+            <button class="navbar-link" data-nav-link>رزومه</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-translate-key="nav_portfolio">نمونه کار ها</button>
+            <button class="navbar-link" data-nav-link>نمونه کار ها</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-translate-key="nav_blog">وبلاگ</button>
+            <button class="navbar-link" data-nav-link>وبلاگ</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-translate-key="nav_contact">ارتباط</button>
+            <button class="navbar-link" data-nav-link>ارتباط</button>
           </li>
 
         </ul>
@@ -348,19 +232,19 @@
       <article class="about  active" data-page="من کی ام؟">
 
         <header>
-          <h2 class="h2 article-title" data-translate-key="about_title">مــعــرفـی مــن</h2>
+          <h2 class="h2 article-title">مــعــرفـی مــن</h2>
         </header>
 
         <section class="about-text">
-          <p data-translate-key="about_p1">
+          <p dir="rtl" align="right">
             من یه توسعه‌دهنده و طراحم که بین دنیای کد، پیکسل و محتوا حرکت می‌کنم. برای من، یه پروژه فقط یه سری کد نیست؛ یه تجربه‌ی کامله. به همین خاطر، روی سه حوزه‌ی اصلی تمرکز کردم: <strong>برنامه‌نویسی</strong> برای ساختن یه منطق قوی، <strong>طراحی</strong> برای خلق یه ظاهر زیبا و کاربرپسند، و <strong>تولید محتوا</strong> برای تعریف کردن داستان اون محصول.
           </p>
 
-          <p data-translate-key="about_p2">
+          <p dir="rtl" align="right">
             این مسیر، از کنجکاوی تو نوجوونی و شرکت تو جشنواره‌های علمی شروع شد و امروز به ساختن وب‌اپلیکیشن‌های واقعی، طراحی برای کسب‌وکارها و مدیریت پروژه‌های دیجیتال رسیده. هر پروژه، از یه ربات تلگرامی ساده گرفته تا یه وب‌سایت فروشگاهی کامل، برای من یه فرصت جدیده تا چالش‌ها رو به راه‌حل‌های خلاقانه تبدیل کنم.
           </p>
 
-          <p data-translate-key="about_p3">
+          <p dir="rtl" align="right">
             هدف نهایی من اینه که محصولاتی بسازم که فقط «کار نکنن»، بلکه به کاربر حس خوبی هم بدن. دنبال همکاری تو پروژه‌هایی‌ام که بتونم با ترکیب تکنولوژی و خلاقیت، یه ارزش واقعی و موندگار خلق کنم.
           </p>
         </section>
@@ -371,7 +255,7 @@
 
         <section class="service">
 
-          <h3 class="h3 service-title" data-translate-key="skills_section_title">مــهــارت هــای مــن</h3>
+          <h3 class="h3 service-title">مــهــارت هــای مــن</h3>
 
           <ul class="service-list">
 
@@ -383,9 +267,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_web">طــراحـی وبــسـایت</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">طــراحـی وبــسـایت</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_web">
+                <p class="service-item-text" dir="rtl" align="right">
                   توسعه وب‌سایت‌های مدرن و واکنش‌گرا با HTML, CSS, و JavaScript و همچنین طراحی و پیاده‌سازی سایت‌های داینامیک با سیستم مدیریت محتوای وردپرس.
                 </p>
               </div>
@@ -399,9 +283,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_desktop">بــرنامه نویــسی دســکتاپ</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">بــرنامه نویــسی دســکتاپ</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_desktop">
+                <p class="service-item-text" dir="rtl" align="right">
                   ساخت اپلیکیشن‌های دسکتاپ چندمنظوره با پایتون، از ابزارهای تحت ترمینال گرفته تا نرم‌افزارهای دارای رابط کاربری گرافیکی (GUI).
                 </p>
               </div>
@@ -415,9 +299,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_mobile">بــرنامه نویــسی مـــوبـایل</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">بــرنامه نویــسی مـــوبـایل</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_mobile">
+                <p class="service-item-text" dir="rtl" align="right">
                   توسعه اپلیکیشن‌های نیتیو اندروید با کاتلین و ساخت اپلیکیشن‌های چندسکویی (Cross-platform) برای اندروید و iOS با فریم‌ورک فلاتر.
                 </p>
               </div>
@@ -431,9 +315,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_social">مــدیـریـت شــبـکـه هـای اجـتـمـاعـی</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">مــدیـریـت شــبـکـه هـای اجـتـمـاعـی</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_social">
+                <p class="service-item-text" dir="rtl" align="right">
                   مدیریت و رشد صفحات اینستاگرام و کانال‌های تلگرام با تمرکز بر استراتژی‌های تولید محتوا و افزایش تعامل کاربران.
                 </p>
               </div>
@@ -448,9 +332,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_graphic">طــراحـی گــرافــیکی</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">طــراحـی گــرافــیکی</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_graphic">
+                <p class="service-item-text" dir="rtl" align="right">
                   خلق هویت بصری، از طراحی لوگو و پوستر تا بنرهای دیجیتال با استفاده از ابزارهای استاندارد صنعتی مانند فتوشاپ و ایلاستریتور.
                 </p>
               </div>
@@ -464,9 +348,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_video">تـولـیـد مـحـتـوای ویـدیـویـی</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">تـولـیـد مـحـتـوای ویـدیـویـی</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_video">
+                <p class="service-item-text" dir="rtl" align="right">
                   ساخت و تدوین محتوای ویدیویی جذاب، از تیزرهای تبلیغاتی تا ویدیوهای آموزشی، با استفاده از نرم‌افزارهای Adobe Premiere Pro و After Effects.
                 </p>
               </div>
@@ -480,9 +364,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_ai">هــــوش مــصنـوعی</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">هــــوش مــصنـوعی</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_ai">
+                <p class="service-item-text" dir="rtl" align="right">
                   آشنایی با مفاهیم یادگیری ماشین و توسعه مدل‌های اولیه (Proof-of-concept) هوش مصنوعی با استفاده از کتابخانه‌های پایتون.
                 </p>
               </div>
@@ -496,9 +380,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_security">امــنـیـت و شــبـکـه</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">امــنـیـت و شــبـکـه</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_security">
+                <p class="service-item-text" dir="rtl" align="right">
                   آشنایی با مفاهیم اولیه امنیت سایبری و کار با ابزارهای تست نفوذ در محیط لینوکس (کالی) برای ارزیابی و افزایش امنیت سیستم‌ها.
                 </p>
               </div>
@@ -513,9 +397,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_bot">تــوســعــه ربــات</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">تــوســعــه ربــات</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_bot">
+                <p class="service-item-text" dir="rtl" align="right">
                   طراحی و توسعه ربات‌های تلگرامی هوشمند برای خودکارسازی وظایف، ارائه خدمات و افزایش تعامل با کاربران با استفاده از پایتون.
                 </p>
               </div>
@@ -530,9 +414,9 @@
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-translate-key="skill_title_uiux">طـــراحــی  UI/UX</h4>
+                <h4 class="h4 service-item-title" dir="rtl" align="right">طـــراحــی  UI/UX</h4>
 
-                <p class="service-item-text" data-translate-key="skill_desc_uiux">
+                <p class="service-item-text" dir="rtl" align="right">
                   طراحی رابط‌های کاربری (UI) زیبا و خلق تجربه‌های کاربری (UX) بهینه و شهودی با تمرکز بر نیازهای کاربر، با استفاده از ابزارهایی مانند فیگما.
                 </p>
               </div>
@@ -549,7 +433,7 @@
 
         <section class="clients">
 
-          <h3 class="h3 clients-title" data-translate-key="tools_section_title">ابــزار هـای مـورد اســتفاده مـن</h3>
+          <h3 class="h3 clients-title">ابــزار هـای مـورد اســتفاده مـن</h3>
 
           <ul class="clients-list has-scrollbar">
 
@@ -661,14 +545,14 @@
 
         <section class="skill">
 
-          <h3 class="h3 skills-title" data-translate-key="abilities_section_title">تـــوانــایـی هـای مـــن</h3>
+          <h3 class="h3 skills-title">تـــوانــایـی هـای مـــن</h3>
 
           <ul class="skills-list content-card">
 
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_web">طراحی وبسایت</h5>
+                <h5 class="h5">طراحی وبسایت</h5>
                 <data value="90">۹۰%</data>
               </div>
 
@@ -681,7 +565,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_graphic">طراحی گرافیکی</h5>
+                <h5 class="h5">طراحی گرافیکی</h5>
                 <data value="80">۸۰%</data>
               </div>
 
@@ -693,7 +577,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_content">تولید محتوا و پیج گردانی</h5>
+                <h5 class="h5">تولید محتوا و پیج گردانی</h5>
                 <data value="70">۷۰%</data>
               </div>
 
@@ -705,7 +589,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_desktop">برنامه نویسی دسکتاپ</h5>
+                <h5 class="h5">برنامه نویسی دسکتاپ</h5>
                 <data value="90">۹۰%</data>
               </div>
 
@@ -717,7 +601,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_mobile">برنامه نویسی موبایل</h5>
+                <h5 class="h5">برنامه نویسی موبایل</h5>
                 <data value="60">۶۰%</data>
               </div>
 
@@ -730,7 +614,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_ai">هوش مصنوعی و پایتون</h5>
+                <h5 class="h5">هوش مصنوعی و پایتون</h5>
                 <data value="70">۷۰%</data>
               </div>
 
@@ -742,7 +626,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5" data-translate-key="ability_security">امنیت</h5>
+                <h5 class="h5">امنیت</h5>
                 <data value="50">۵۰%</data>
               </div>
 
@@ -817,7 +701,7 @@
       <article class="resume" data-page="رزومه">
 
         <header>
-          <h2 class="h2 article-title" data-translate-key="resume_title">رزومـــــه مـــن</h2>
+          <h2 class="h2 article-title">رزومـــــه مـــن</h2>
         </header>
 
         <section class="timeline">
@@ -827,26 +711,28 @@
               <ion-icon name="book-outline"></ion-icon>
             </div>
 
-            <h3 class="h3" data-translate-key="resume_education_title">تحـصــیـــلات</h3>
+            <h3 class="h3">تحـصــیـــلات</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="edu_sampad_title">دبیرستان تیزهوشان شهید بهشتی (سمپاد)</h4>
+              <h4 class="h4 timeline-item-title">دبیرستان تیزهوشان شهید بهشتی (سمپاد)</h4>
 
-              <span data-translate-key="edu_sampad_date">۱۳۹۸ — ۱۴۰۴</span>
+              <span>۱۳۹۸ — ۱۴۰۴</span>
 
-              <p class="timeline-text" data-translate-key="edu_sampad_desc">
+              <p class="timeline-text"   dir="rtl" align="left">
                 تحصیل در دبیرستان تیزهوشان شهید بهشتی (سمپاد) در دوره اول و دوم متوسطه.
               </p>
 
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title" data-translate-key="edu_future_title">آنچه خواهیم دید...</h4>
-              <span data-translate-key="edu_future_date">بزودی :)</span>
+
+              <h4 class="h4 timeline-item-title"  dir="rtl" align="left">آنچه خواهیم دید...</h4>
+
+              <span  dir="rtl" align="left">بزودی :)</span>
 
             </li>
 
@@ -861,18 +747,18 @@
               <ion-icon name="book-outline"></ion-icon>
             </div>
 
-            <h3 class="h3" data-translate-key="resume_experience_title">تـــجـــربـیـات</h3>
+            <h3 class="h3">تـــجـــربـیـات</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_english_title">یادگیری زبان انگلیسی</h4>
+              <h4 class="h4 timeline-item-title">یادگیری زبان انگلیسی</h4>
 
-              <span data-translate-key="exp_english_date">۱۳۹۴ — اکنون</span>
+              <span>۱۳۹۴ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_english_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع یادگیری زبان انگلیسی با شرکت در کلاس های آموزشی ، کتاب های داستان ، فیلم و بعد ها به صورت خودآموز
               </p>
 
@@ -880,11 +766,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_graphic_title">طراحی گرافیک</h4>
+              <h4 class="h4 timeline-item-title">طراحی گرافیک</h4>
 
-              <span data-translate-key="exp_graphic_date">۱۳۹۷ — اکنون</span>
+              <span>۱۳۹۷ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_graphic_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع طراحی طرح های مختلف از جمله لوگو ، پوستر ، بنر و ... با فتوشاپ و ایلاستریتور
               </p>
 
@@ -892,11 +778,11 @@
             
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_python_title">برنامه نویسی پایتون</h4>
+              <h4 class="h4 timeline-item-title">برنامه نویسی پایتون</h4>
 
-              <span data-translate-key="exp_python_date">۱۳۹۸ — اکنون</span>
+              <span>۱۳۹۸ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_python_desc">
+              <p class="timeline-text"   dir="rtl" align="left">
                 شروع برنامه نویسی اپ های دسکتاپ با پایتون ، تست و شروع ربات نویسی برای تلگرام
               </p>
 
@@ -904,11 +790,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_webcode_title">طراحی وبسایت با کدنویسی</h4>
+              <h4 class="h4 timeline-item-title">طراحی وبسایت با کدنویسی</h4>
 
-              <span data-translate-key="exp_webcode_date">۱۳۹۸ — اکنون</span>
+              <span>۱۳۹۸ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_webcode_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع طراحی وبلاگ ساده با HTML5 و CSS3 و پس از آنها یادگیری جاوا اسکریپت و یادگیری ساخت وب-اپ
               </p>
 
@@ -916,11 +802,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_netka19_title">شرکت در همایش نتکا ۱۹</h4>
+              <h4 class="h4 timeline-item-title">شرکت در همایش نتکا ۱۹</h4>
 
-              <span data-translate-key="exp_netka19_date">۱۳۹۹ — ۱۴۰۰</span>
+              <span>۱۳۹۹ — ۱۴۰۰</span>
 
-              <p class="timeline-text" data-translate-key="exp_netka19_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شرکت در نوزدهمین همایش نتکا (مجازی) به عنوان طرح دهنده و ارائه اپلیکیشن "جعبه ابزار"
               </p>
 
@@ -928,11 +814,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_security_title">شروع فعالیت در بخش امنیت</h4>
+              <h4 class="h4 timeline-item-title">شروع فعالیت در بخش امنیت</h4>
 
-              <span data-translate-key="exp_security_date">۱۴۰۰ — اکنون</span>
+              <span>۱۴۰۰ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_security_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 ورود به حوزه امنیت با آشنایی با سیستم‌عامل لینوکس (Ubuntu) و سپس یادگیری و استفاده از ابزارهای تست نفوذ در توزیع Kali Linux.
               </p>
 
@@ -940,11 +826,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_kharazmi_title">طلای استانی در جشنواره خوارزمی</h4>
+              <h4 class="h4 timeline-item-title">طلای استانی در جشنواره خوارزمی</h4>
 
-              <span data-translate-key="exp_kharazmi_date">۱۳۹۹ — ۱۴۰۰</span>
+              <span>۱۳۹۹ — ۱۴۰۰</span>
 
-              <p class="timeline-text" data-translate-key="exp_kharazmi_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 ارائه اپلیکیشن دسکتاپ "جعبه ابزار" در شاخه نرم افزار جشنواره نوجوان خوارزمی و کسب مقام طلای استانی
               </p>
 
@@ -952,11 +838,11 @@
             
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_wordpress_title">طراحی وبسایت با وردپرس</h4>
+              <h4 class="h4 timeline-item-title">طراحی وبسایت با وردپرس</h4>
 
-              <span data-translate-key="exp_wordpress_date">۱۴۰۰ — اکنون</span>
+              <span>۱۴۰۰ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_wordpress_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع طراحی وبسایت با وردپرس و ایجاد وبلاگ تکنولوژی "آلفا-هاب"
               </p>
 
@@ -964,11 +850,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_netka20_title">شرکت در همایش نتکا ۲۰</h4>
+              <h4 class="h4 timeline-item-title">شرکت در همایش نتکا ۲۰</h4>
 
-              <span data-translate-key="exp_netka20_date">۱۴۰۰ — ۱۴۰۱</span>
+              <span>۱۴۰۰ — ۱۴۰۱</span>
 
-              <p class="timeline-text" data-translate-key="exp_netka20_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شرکت در بیستمین همایش نتکا به عنوان طرح دهنده و ارائه اپلیکیشن "دستیار اپیک"
               </p>
 
@@ -976,11 +862,11 @@
             
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_ai_title">شروع فعالیت در زمینه هوش مصنوعی</h4>
+              <h4 class="h4 timeline-item-title">شروع فعالیت در زمینه هوش مصنوعی</h4>
 
-              <span data-translate-key="exp_ai_date">۱۴۰۱ — اکنون</span>
+              <span>۱۴۰۱ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_ai_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع آموزش ، تست و یادگیری الگوریتم نویسی چت بات های هوش مصنوعی با پایتون
               </p>
 
@@ -988,11 +874,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_content_title">شروع فعالیت در زمینه تولید محتوا</h4>
+              <h4 class="h4 timeline-item-title">شروع فعالیت در زمینه تولید محتوا</h4>
 
-              <span data-translate-key="exp_content_date">۱۴۰۱ — اکنون</span>
+              <span>۱۴۰۱ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_content_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع آموزش و خلق اثر با ادوبی پریمایر پرو و ادوبی افتر افکت
               </p>
 
@@ -1000,66 +886,66 @@
             
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_netka21_title">شرکت در همایش نتکا ۲۱</h4>
+              <h4 class="h4 timeline-item-title">شرکت در همایش نتکا ۲۱</h4>
 
-              <span data-translate-key="exp_netka21_date">۱۴۰۱ — ۱۴۰۲</span>
+              <span>۱۴۰۱ — ۱۴۰۲</span>
 
-              <p class="timeline-text" data-translate-key="exp_netka21_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شرکت در بیست و یکمین همایش نتکا به عنوان طرح دهنده و ارائه ورژن دوم اپلیکیشن "دستیار اپیک" و بات تلگرامی "آلفا-بات"
               </p>
 
             </li>
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_insta_title">یادگیری الگوریتم اینستاگرام و پیج گردانی</h4>
+              <h4 class="h4 timeline-item-title">یادگیری الگوریتم اینستاگرام و پیج گردانی</h4>
 
-              <span data-translate-key="exp_insta_date">۱۴۰۲ — اکنون</span>
+              <span>۱۴۰۲ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_insta_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 کسب مهارت در مدیریت شبکه‌های اجتماعی، با تمرکز بر الگوریتم‌های اینستاگرام، استراتژی‌های رشد (افزایش دنبال‌کننده و ورود به اکسپلور) و مدیریت کامل پیج.
               </p>
 
             </li>
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_ui_title">فعالیت در حوزه طراحی رابط کاربری</h4>
+              <h4 class="h4 timeline-item-title">فعالیت در حوزه طراحی رابط کاربری</h4>
 
-              <span data-translate-key="exp_ui_date">۱۴۰۲ — اکنون</span>
+              <span>۱۴۰۲ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_ui_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شروع فعالیت در حوزه طراحی UI و UX با نرم افزار محبوب و پر استفاده فیگما
               </p>
 
             </li>
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_netka22_title">برگزاری همایش نتکا ۲۲</h4>
+              <h4 class="h4 timeline-item-title">برگزاری همایش نتکا ۲۲</h4>
 
-              <span data-translate-key="exp_netka22_date">۱۴۰۲ — ۱۴۰۳</span>
+              <span>۱۴۰۲ — ۱۴۰۳</span>
 
-              <p class="timeline-text" data-translate-key="exp_netka22_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 برگزاری بیست و دومین همایش نتکا به عنوان دبیر علمی و لانچ رسمی و ارائه وب اپلیکیشن "می-تو"
               </p>
 
             </li>
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_farda_title">طلای استانی در جشنواره فردا</h4>
+              <h4 class="h4 timeline-item-title">طلای استانی در جشنواره فردا</h4>
 
-              <span data-translate-key="exp_farda_date">۱۴۰۲ — ۱۴۰۳</span>
+              <span>۱۴۰۲ — ۱۴۰۳</span>
 
-              <p class="timeline-text" data-translate-key="exp_farda_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 ارائه وب اپلیکیشن "می-تو" در شاخه نرم افزار موبایل و وبسایت در جشنواره فرهنگی هنری فردا و کسب مقام طلای استانی
               </p>
 
             </li>
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_android_title">یادگیری برنامه نویسی اندروید</h4>
+              <h4 class="h4 timeline-item-title">یادگیری برنامه نویسی اندروید</h4>
 
-              <span data-translate-key="exp_android_date">۱۴۰۲ — اکنون</span>
+              <span>۱۴۰۲ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_android_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 ورود به دنیای توسعه موبایل و یادگیری ساخت اپلیکیشن‌های نیتیو اندروید با کاتلین و اپلیکیشن‌های چندسکویی (Cross-Platform) با فریم‌ورک فلاتر.
               </p>
 
@@ -1067,11 +953,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_sampad_achieve_title">شرکت در همایش دستاورد های سمپاد</h4>
+              <h4 class="h4 timeline-item-title">شرکت در همایش دستاورد های سمپاد</h4>
 
-              <span data-translate-key="exp_sampad_achieve_date">۱۴۰۳ — ۱۴۰۴</span>
+              <span>۱۴۰۳ — ۱۴۰۴</span>
 
-              <p class="timeline-text" data-translate-key="exp_sampad_achieve_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 شرکت در دومین همایش دستاورد های پژوهشی سمپاد به عنوان طرح دهنده و ارائه اپلیکیشن تحت وب "می-تو"
               </p>
 
@@ -1079,11 +965,11 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_interview_title">مصاحبه با نشریه آموزش و پرورش اصفهان</h4>
+              <h4 class="h4 timeline-item-title">مصاحبه با نشریه آموزش و پرورش اصفهان</h4>
 
-              <span data-translate-key="exp_interview_date">۱۴۰۳ — ۱۴۰۴</span>
+              <span>۱۴۰۳ — ۱۴۰۴</span>
 
-              <p class="timeline-text" data-translate-key="exp_interview_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                 مصاحبه با تیم نشریه آموزش و پرورش اصفهان و اختصاص دادن سه صفحه از ماهنامه دانش آموزی پرتو مهر با عنوان "رویای دیجیتالی راستین" در ارتباط با اپلیکیشن تحت وب "می-تو"
               </p>
 
@@ -1091,19 +977,21 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_maral_title">طراحی کامل و پشتیبانی وبسایت مارال ستاره</h4>
+              <h4 class="h4 timeline-item-title">طراحی کامل و پشتیبانی وبسایت مارال ستاره</h4>
 
-              <span data-translate-key="exp_maral_date">۱۴۰۳ — اکنون</span>
+              <span>۱۴۰۳ — اکنون</span>
 
-              <p class="timeline-text" data-translate-key="exp_maral_desc">
+              <p class="timeline-text"  dir="rtl" align="left">
                طراحی کامل وب‌سایت وردپرسی مجتمع‌های رفاهی گردشگری مارال ستاره، به همراه پشتیبانی فنی و اجرای استراتژی‌های اولیه سئو.
               </p>
 
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title" data-translate-key="exp_future_title">آنچه خواهیم دید...</h4>
-              <span data-translate-key="exp_future_date">بزودی :)</span>
+
+              <h4 class="h4 timeline-item-title"  dir="rtl" align="left">آنچه خواهیم دید...</h4>
+
+              <span  dir="rtl" align="left">بزودی :)</span>
 
             </li>
           </ol>
@@ -1123,7 +1011,7 @@
       <article class="portfolio" data-page="نمونه کار ها">
 
         <header>
-          <h2 class="h2 article-title" data-translate-key="portfolio_title">نـمـونـه کـار هـای مــن</h2>
+          <h2 class="h2 article-title">نـمـونـه کـار هـای مــن</h2>
         </header>
 
         <section class="projects">
@@ -1131,28 +1019,28 @@
           <ul class="filter-list">
 
             <li class="filter-item">
-              <button class="active" data-filter-btn data-filter-value="all" data-translate-key="filter_all">همه موارد</button>
+              <button class="active" data-filter-btn>همه موارد</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="web" data-translate-key="filter_web">وبسایت</button>
+              <button data-filter-btn>وبسایت</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="app" data-translate-key="filter_app">اپلیکیشن</button>
+              <button data-filter-btn>اپلیکیشن</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="bot" data-translate-key="filter_bot">ربات</button>
+              <button data-filter-btn>ربات</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="design" data-translate-key="filter_design">طراحی و گرافیک</button>
+              <button data-filter-btn>طراحی و گرافیک</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="video" data-translate-key="filter_video">تدوین ویدیو</button>
+              <button data-filter-btn>تدوین ویدیو</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn data-filter-value="tutorial" data-translate-key="filter_tutorial">آموزش</button>
+              <button data-filter-btn>آموزش</button>
             </li>
           </ul>
 
@@ -1160,7 +1048,7 @@
 
             <button class="filter-select" data-select>
 
-              <div class="select-value" data-selecct-value data-translate-key="filter_select">انتخاب فیلتر</div>
+              <div class="select-value" data-selecct-value>انتخاب فیلتر</div>
 
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
@@ -1171,36 +1059,36 @@
             <ul class="select-list">
 
               <li class="select-item">
-                <button data-select-item data-filter-value="all" data-translate-key="filter_all">همه موارد</button>
+                <button data-select-item>همه موارد</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item data-filter-value="web" data-translate-key="filter_web">وبسایت</button>
+                <button data-select-item>وبسایت</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item data-filter-value="app" data-translate-key="filter_app">اپلیکیشن</button>
+                <button data-select-item>اپلیکیشن</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item data-filter-value="bot" data-translate-key="filter_bot">ربات</button>
+                <button data-select-item>ربات</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item data-filter-value="design" data-translate-key="filter_design">طراحی و گرافیک</button>
+                <button data-select-item>طراحی و گرافیک</button>
               </li>
               <li class="select-item">
-                <button data-select-item data-filter-value="video" data-translate-key="filter_video">تدوین ویدیو</button>
+                <button data-select-item>تدوین ویدیو</button>
               </li>
               <li class="select-item">
-                <button data-select-item data-filter-value="tutorial" data-translate-key="filter_tutorial">آموزش</button>
+                <button data-select-item>آموزش</button>
               </li>
             </ul>
 
           </div>
 
           <ul class="project-list">
-            <li class="project-item  active" data-filter-item data-category="app">
+            <li class="project-item  active" data-filter-item data-category="اپلیکیشن">
               <a href="#">
 
                 <figure class="project-img">
@@ -1211,13 +1099,13 @@
                   <img src="./assets/images/project-40.jpg" alt="Hooshify AI" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_hooshify_title">اپلیکیشن دسکتاپ هوشیفای</h3>
+                <h3 class="project-title"  dir="rtl" align="center">اپلیکیشن دسکتاپ هوشیفای</h3>
 
-                <p class="project-category" data-translate-key="filter_app">اپلیکیشن</p>
+                <p class="project-category"  dir="rtl" align="center">اپلیکیشن</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="tutorial">
+            <li class="project-item  active" data-filter-item data-category="آموزش">
               <a href="./assets/images/project-41.pdf">
 
                 <figure class="project-img">
@@ -1228,13 +1116,13 @@
                   <img src="./assets/images/project-41.jpg" alt="Simple Python Training" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_python_pdf_title">جزوه آموزش مقدماتی پایتون با زبان ساده</h3>
+                <h3 class="project-title"  dir="rtl" align="center">جزوه آموزش مقدماتی پایتون با زبان ساده</h3>
 
-                <p class="project-category" data-translate-key="filter_tutorial">آموزش</p>
+                <p class="project-category"  dir="rtl" align="center">آموزش</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-42.jpeg" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1245,13 +1133,13 @@
                   <img src="./assets/images/project-42.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_tour_poster_title">بازطراحی پوستر تور مجازی</h3>
+                <h3 class="project-title"  dir="rtl" align="center">بازطراحی پوستر تور مجازی</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-39.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1262,13 +1150,13 @@
                   <img src="./assets/images/project-39.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_termenakh_logo_title">طراحی لوگوی "ترمه‌نخ"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی لوگوی "ترمه‌نخ"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="video">
+            <li class="project-item  active" data-filter-item data-category="تدوین ویدیو">
               <a href="https://t.me/Net22Ka/152" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1279,13 +1167,13 @@
                   <img src="./assets/images/project-37.jpg" alt="Video Teaser" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_doc_title">تدوین و طراحی مستند نتکا</h3>
+                <h3 class="project-title"  dir="rtl" align="center">تدوین و طراحی مستند نتکا</h3>
 
-                <p class="project-category" data-translate-key="filter_video">تدوین ویدیو</p>
+                <p class="project-category"  dir="rtl" align="center">تدوین ویدیو</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="web">
+            <li class="project-item  active" data-filter-item data-category="وبسایت">
               <a href="https://shikpooshan.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1296,13 +1184,13 @@
                   <img src="./assets/images/project-31.jpg" alt="شیک پوشان کاشان" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_shikpooshan_title">وبسایت فروشگاهی شیک پوشان کاشان</h3>
+                <h3 class="project-title"  dir="rtl" align="center">وبسایت فروشگاهی شیک پوشان کاشان</h3>
 
-                <p class="project-category" data-translate-key="filter_web">وبسایت</p>
+                <p class="project-category"  dir="rtl" align="center">وبسایت</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-29.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1313,13 +1201,13 @@
                   <img src="./assets/images/project-29.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_makhmali_logo_title">طراحی لوگوی "مخملی"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی لوگوی "مخملی"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="web">
+            <li class="project-item  active" data-filter-item data-category="وبسایت">
               <a href="https://kimiasport.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1330,13 +1218,13 @@
                   <img src="./assets/images/project-15.jpg" alt="کیمیا اسپرت کاشان" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_kimia_title">وبسایت فروشگاهی کیمیا اسپرت کاشان</h3>
+                <h3 class="project-title"  dir="rtl" align="center">وبسایت فروشگاهی کیمیا اسپرت کاشان</h3>
 
-                <p class="project-category" data-translate-key="filter_web">وبسایت</p>
+                <p class="project-category"  dir="rtl" align="center">وبسایت</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="web">
+            <li class="project-item  active" data-filter-item data-category="وبسایت">
               <a href="https://maralsetareh.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1347,13 +1235,13 @@
                   <img src="./assets/images/project-14.jpg" alt="مجتمع رفاهی گردشگری مارال ستاره" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_maral_title">وبسایت رسمی مجتمع های رفاهی گردشگری مارال ستاره</h3>
+                <h3 class="project-title"  dir="rtl" align="center">وبسایت رسمی مجتمع های رفاهی گردشگری مارال ستاره</h3>
 
-                <p class="project-category" data-translate-key="filter_web">وبسایت</p>
+                <p class="project-category"  dir="rtl" align="center">وبسایت</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="app">
+            <li class="project-item  active" data-filter-item data-category="اپلیکیشن">
               <a href="http://metoo.freehost.io" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1364,13 +1252,13 @@
                   <img src="./assets/images/project-12.jpg" alt="MeToo-PWA" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_metoo_title">اپلیکیشن تحت وب "می-تو"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">اپلیکیشن تحت وب "می-تو"</h3>
 
-                <p class="project-category" data-translate-key="filter_app">اپلیکیشن</p>
+                <p class="project-category"  dir="rtl" align="center">اپلیکیشن</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="web">
+            <li class="project-item  active" data-filter-item data-category="وبسایت">
               <a href="https://AlphaHub.vercel.app" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1381,13 +1269,13 @@
                   <img src="./assets/images/project-13.jpg" alt="AlphA-Hub" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_alphahub_title">وبلاگ اخبار تکنولوژی "آلفا-هاب"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">وبلاگ اخبار تکنولوژی "آلفا-هاب"</h3>
 
-                <p class="project-category" data-translate-key="filter_web">وبسایت</p>
+                <p class="project-category"  dir="rtl" align="center">وبسایت</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="bot">
+            <li class="project-item  active" data-filter-item data-category="ربات">
               <a href="https://t.me/AlphA_xRobot" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1398,13 +1286,13 @@
                   <img src="./assets/images/project-11.jpg" alt="AlphA-Bot" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_alphabot_title">ربات تلگرامی "آلفا-بات"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">ربات تلگرامی "آلفا-بات"</h3>
 
-                <p class="project-category" data-translate-key="filter_bot">ربات</p>
+                <p class="project-category"  dir="rtl" align="center">ربات</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="app">
+            <li class="project-item  active" data-filter-item data-category="اپلیکیشن">
               <a href="#">
 
                 <figure class="project-img">
@@ -1415,13 +1303,13 @@
                   <img src="./assets/images/project-10.jpg" alt="Epic-Assistant" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_epic_assistant_title">اپلیکیشن دســکتاپ "دستیار اپیک"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">اپلیکیشن دســکتاپ "دستیار اپیک"</h3>
 
-                <p class="project-category" data-translate-key="filter_app">اپلیکیشن</p>
+                <p class="project-category"  dir="rtl" align="center">اپلیکیشن</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-16.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1432,13 +1320,13 @@
                   <img src="./assets/images/project-16.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_traditional_logo_title">طراحی لوگوی محصولات سنتی</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی لوگوی محصولات سنتی</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-19.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1449,13 +1337,13 @@
                   <img src="./assets/images/project-19.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_statue_title">طراحی نماد و تندیس "نتکا"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی نماد و تندیس "نتکا"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-28.pdf" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1466,13 +1354,13 @@
                   <img src="./assets/images/project-28.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_booklet_title">طراحی کامل دفترچه همایش "نتکا"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی کامل دفترچه همایش "نتکا"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-17.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1483,13 +1371,13 @@
                   <img src="./assets/images/project-17.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_banner_title">طراحی بنر "نتکا"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی بنر "نتکا"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-33.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1500,13 +1388,13 @@
                   <img src="./assets/images/project-33.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_geometric_logo_title">طراحی لوگوی هندسی</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی لوگوی هندسی</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-21.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1517,13 +1405,13 @@
                   <img src="./assets/images/project-21.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_morour_poster_title">طراحی پوستر گرافیکی "مرور"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی پوستر گرافیکی "مرور"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-34.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1534,13 +1422,13 @@
                   <img src="./assets/images/project-34.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_cert_redesign_title">بازطراحی لوح تقدیر</h3>
+                <h3 class="project-title"  dir="rtl" align="center">بازطراحی لوح تقدیر</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-20.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1551,13 +1439,13 @@
                   <img src="./assets/images/project-20.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_story_design_title">طراحی مناسبتی در ابعاد استوری اینستاگرام</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی مناسبتی در ابعاد استوری اینستاگرام</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-36.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1568,13 +1456,13 @@
                   <img src="./assets/images/project-36.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_religious_poster_title">بازطراحی پوستر مذهبی</h3>
+                <h3 class="project-title"  dir="rtl" align="center">بازطراحی پوستر مذهبی</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-22.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1585,13 +1473,13 @@
                   <img src="./assets/images/project-22.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_logo_redesign_title">باز طراحی و ادیت لوگوی "نتکا"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">باز طراحی و ادیت لوگوی "نتکا"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-35.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1602,13 +1490,13 @@
                   <img src="./assets/images/project-35.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_cert_redesign_2_title">بازطراحی لوح تقدیر</h3>
+                <h3 class="project-title"  dir="rtl" align="center">بازطراحی لوح تقدیر</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-23.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1619,13 +1507,13 @@
                   <img src="./assets/images/project-23.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_metoo_poster_1_title">طراحی پوستر گرافیکی "می-تو" - پارت اول</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی پوستر گرافیکی "می-تو" - پارت اول</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-24.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1636,13 +1524,13 @@
                   <img src="./assets/images/project-24.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_metoo_poster_2_title">طراحی پوستر گرافیکی "می-تو" - پارت دوم</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی پوستر گرافیکی "می-تو" - پارت دوم</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-25.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1653,13 +1541,13 @@
                   <img src="./assets/images/project-25.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netcafe_typo_title">تایپوگرافی لوگوی "نتکافه"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">تایپوگرافی لوگوی "نتکافه"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-38.pdf" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1670,13 +1558,13 @@
                   <img src="./assets/images/project-38.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_bizcard_title">طراحی کارت ویزیت</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی کارت ویزیت</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-18.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1687,13 +1575,13 @@
                   <img src="./assets/images/project-18.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_pixelart_logo_title">طراحی لوگو با سبک پیکسل آرت</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی لوگو با سبک پیکسل آرت</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-26.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1704,13 +1592,13 @@
                   <img src="./assets/images/project-26.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_netka_typo_title">تایپوگرافی لوگوی "نتکا"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">تایپوگرافی لوگوی "نتکا"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
-            <li class="project-item  active" data-filter-item data-category="design">
+            <li class="project-item  active" data-filter-item data-category="طراحی و گرافیک">
               <a href="https://raAstIN.github.io/assets/images/project-27.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1721,9 +1609,9 @@
                   <img src="./assets/images/project-27.jpg" alt="Graphic Design" loading="lazy">
                 </figure>
 
-                <h3 class="project-title" data-translate-key="p_morour_poster_2_title">طراحی پوستر گرافیکی "مرور"</h3>
+                <h3 class="project-title"  dir="rtl" align="center">طراحی پوستر گرافیکی "مرور"</h3>
 
-                <p class="project-category" data-translate-key="filter_design">طراحی و گرافیک</p>
+                <p class="project-category"  dir="rtl" align="center">طراحی و گرافیک</p>
 
               </a>
             </li>
@@ -1744,7 +1632,7 @@
       <article class="blog" data-page="وبلاگ">
 
         <header>
-          <h2 class="h2 article-title" data-translate-key="blog_title">وبـــــلاگ مــــن</h2>
+          <h2 class="h2 article-title">وبـــــلاگ مــــن</h2>
         </header>
 
         <section class="blog-posts">
@@ -1761,16 +1649,16 @@
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category" data-translate-key="blog_post1_cat">سرگرمی</p>
+                    <p class="blog-category"  dir="rtl" align="right">سرگرمی</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2024-04-04" data-translate-key="blog_post1_date">۱۵ فروردین ۱۴۰۳</time>
+                    <time datetime="2024-03-04"  dir="rtl" align="right">۱۵ فروردین ۱۴۰۳</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title" data-translate-key="blog_post1_title">تست اولین پست وبلاگ</h3>
+                  <h3 class="h3 blog-item-title"  dir="rtl" align="right">تست اولین پست وبلاگ</h3>
 
-                  <p class="blog-text" data-translate-key="blog_post1_desc">
+                  <p class="blog-text"  dir="rtl" align="right">
                     این موز ، جهت تست اولین پست وبلاگ من می باشد.
                   </p>
 
@@ -1796,32 +1684,38 @@
       <article class="contact" data-page="ارتباط">
 
         <header>
-          <h2 class="h2 article-title" data-translate-key="contact_title">ارتـــبــاط بـا مـــن</h2>
+          <h2 class="h2 article-title">ارتـــبــاط بـا مـــن</h2>
         </header>
 
         <section class="mapbox" data-mapbox>
           <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53340.219491292!2d51.391595049999995!3d33.98181655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f968543ab3d8e61%3A0x9633246a50f019f!2sKashan%2C%20Isfahan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1715874911005!5m2!1sen!2s" width="400" height="300" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207344.80064363254!2d51.18284522204078!3d35.70746141222778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00491ff3dcd9%3A0xf0b3697c567024bc!2sTehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1712085800545!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </figure>
         </section>
 
         <section class="contact-form">
 
-          <h3 class="h3 form-title" data-translate-key="contact_form_title">فـــــرم مـــعـــرفـــی</h3>
+          <h3 class="h3 form-title">فـــــرم مـــعـــرفـــی</h3>
 
           <form action="#" class="form" data-form>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="نام کامل" required data-form-input data-translate-placeholder="form_fullname">
+              <input type="text" name="name" class="form-input" placeholder="نام" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="آدرس پست الکترونیکی" required data-form-input data-translate-placeholder="form_email">
+              <input type="text" name="lastname" class="form-input" placeholder="نام خانوادگی" required data-form-input>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="پیام شما" required data-form-input data-translate-placeholder="form_message"></textarea>
+            <div class="input-wrapper">
+              <input type="tel" name="phone" class="form-input" placeholder="شماره تلفن" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="آدرس پست الکترونیکی" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="پیام شما" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
-              <span data-translate-key="form_send">ارسال پیام</span>
+              <span>ارسال پیام</span>
             </button>
 
           </form>
