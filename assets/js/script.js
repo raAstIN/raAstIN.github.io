@@ -114,9 +114,9 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let i = 0; i < pages.length; i++) {
-      pages[i].classList.remove("active");
-      navigationLinks[i].classList.remove("active");
+    for (let j = 0; j < pages.length; j++) {
+      pages[j].classList.remove("active");
+      navigationLinks[j].classList.remove("active");
     }
 
     this.classList.add("active");
