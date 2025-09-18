@@ -1687,8 +1687,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   width: 100%;
   height: 100%;
   background: hsla(240, 1%, 17%, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   z-index: 1;
 }
 
@@ -1707,8 +1707,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   position: absolute;
   inset: 1px;
   background: var(--bg-gradient-jet);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: inherit;
   z-index: -1;
 }
@@ -1911,8 +1911,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   position: absolute;
   inset: 1px;
   background: var(--bg-gradient-jet);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: inherit;
   z-index: -1;
 }
