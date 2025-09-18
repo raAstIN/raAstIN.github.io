@@ -114,16 +114,15 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let j = 0; j < pages.length; j++) {
-      pages[j].classList.remove("active");
-      navigationLinks[j].classList.remove("active");
+    for (let i = 0; i < pages.length; i++) {
+      if (navigationLinks[i].classList.contains("active")) {
+        navigationLinks[i].classList.remove("active");
+        pages[i].classList.remove("active");
+      }
     }
 
     this.classList.add("active");
-    const targetPage = document.querySelector(`[data-page="${this.innerHTML.toLowerCase()}"]`);
-    if (targetPage) {
-      targetPage.classList.add("active");
-    }
+    pages[i].classList.add("active");
     window.scrollTo(0, 0);
   });
 }
