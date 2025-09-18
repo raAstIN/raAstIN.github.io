@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
 // element toggle function
-const elementToggleFunc = function (elem) { if (elem) elem.classList.toggle("active"); }
+const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile (guard)
-if (sidebarBtn) sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+// sidebar toggle functionality for mobile
+sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
@@ -21,47 +21,40 @@ const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
-// modal toggle function (guard)
+// modal toggle function
 const testimonialsModalFunc = function () {
-  if (modalContainer) modalContainer.classList.toggle("active");
-  if (overlay) overlay.classList.toggle("active");
+  modalContainer.classList.toggle("active");
+  overlay.classList.toggle("active");
 }
 
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
-  // guard: ensure required modal elements exist before reading
   testimonialsItem[i].addEventListener("click", function () {
-    const avatar = this.querySelector("[data-testimonials-avatar]");
-    const title = this.querySelector("[data-testimonials-title]");
-    const text = this.querySelector("[data-testimonials-text]");
-    if (modalImg && avatar) {
-      modalImg.src = avatar.src || modalImg.src;
-      modalImg.alt = avatar.alt || modalImg.alt;
-    }
-    if (modalTitle && title) modalTitle.innerHTML = title.innerHTML;
-    if (modalText && text) modalText.innerHTML = text.innerHTML;
+    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
     testimonialsModalFunc();
   });
 }
 
-// add click event to modal close button (guard)
-if (modalCloseBtn) modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-if (overlay) overlay.addEventListener("click", testimonialsModalFunc);
+// add click event to modal close button
+modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+overlay.addEventListener("click", testimonialsModalFunc);
 
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-select-value]");
+const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-if (select) select.addEventListener("click", function () { elementToggleFunc(this); });
+select.addEventListener("click", function () { elementToggleFunc(this); });
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
-    const raw = this.innerText || this.textContent || "";
-    let selectedValue = raw.toLowerCase().trim();
-    if (selectValue) selectValue.innerText = raw.trim();
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
   });
@@ -72,10 +65,9 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
-    const cat = (filterItems[i].dataset.category || "").toLowerCase();
-    if (selectedValue === "all" || selectedValue === "همه موارد") {
+    if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === cat) {
+    } else if (selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -84,15 +76,14 @@ const filterFunc = function (selectedValue) {
 }
 
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0] || null;
+let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
-    const raw = this.innerText || this.textContent || "";
-    let selectedValue = raw.toLowerCase().trim();
-    if (selectValue) selectValue.innerText = raw.trim();
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
-    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+    lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
   });
@@ -106,8 +97,7 @@ const formBtn = document.querySelector("[data-form-btn]");
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-    // check form validation (guard)
-    if (!form || !formBtn) return;
+    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -120,69 +110,19 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// helper to normalize text
-const normalize = (s) => (s || "").toString().trim().toLowerCase();
-
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    // remove active from all pages and nav links safely
-    Array.from(pages).forEach(p => p.classList.remove("active"));
-    Array.from(navigationLinks).forEach(l => l.classList.remove("active"));
-
-    this.classList.add("active");
-
-    // Determine target page name in a robust way
-    const label = normalize(this.textContent || this.innerText);
-    let targetName = null;
-
-    // 1) prefer explicit data-page on the link: data-page="resume"
-    if (this.dataset && this.dataset.page) {
-      targetName = normalize(this.dataset.page);
-    }
-
-    // 2) if link is an anchor to a hash like "#resume", use that
-    if (!targetName) {
-      const href = this.getAttribute && this.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        targetName = normalize(href.slice(1));
+    for (let j = 0; j < pages.length; j++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
+        window.scrollTo(0, 0);
+      } else {
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
       }
     }
-
-    // 3) try to match label to pages' data-page attributes
-    if (!targetName) {
-      for (let k = 0; k < pages.length; k++) {
-        const pageName = normalize(pages[k].getAttribute('data-page'));
-        if (pageName === label) {
-          targetName = pageName;
-          break;
-        }
-      }
-    }
-
-    // 4) fallback mapping for common labels (English and Persian)
-    if (!targetName) {
-      const map = {
-        'about': 'about',
-        'resume': 'resume',
-        'portfolio': 'portfolio',
-        'blog': 'blog',
-        'contact': 'contact',
-        'من کی ام؟': 'about',
-        'رزومه': 'resume',
-        'home': 'about'
-      };
-      if (map[label]) targetName = map[label];
-    }
-
-    // activate the matched page if found
-    if (targetName) {
-      const targetPage = document.querySelector(`[data-page="${targetName}"]`);
-      if (targetPage) targetPage.classList.add("active");
-    }
-
-    window.scrollTo(0, 0);
   });
 }
 
@@ -203,63 +143,78 @@ const sendMessageToTelegram = function (message) {
 }
 
 // اضافه کردن رویداد برای فرم ارسال پیام
-if (form) {
-  form.addEventListener('submit', function (event) {
-    event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
+form.addEventListener('submit', function (event) {
+  event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
 
-    // دریافت مقادیر فیلدهای فرم
-    const name = document.querySelector('input[name="name"]').value;
-    const lastname = document.querySelector('input[name="lastname"]').value;
-    const phone = document.querySelector('input[name="phone"]').value;
-    const email = document.querySelector('input[name="email"]').value;
-    const message = document.querySelector('textarea[name="message"]').value;
+  // دریافت مقادیر فیلدهای فرم
+  const name = document.querySelector('input[name="name"]').value;
+  const lastname = document.querySelector('input[name="lastname"]').value;
+  const phone = document.querySelector('input[name="phone"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const message = document.querySelector('textarea[name="message"]').value;
 
-    // ساختن پیام برای ارسال به تلگرام
-    const telegramMessage = `نام: ${name} , \nنام خانوادگی: ${lastname} , \nشماره تلفن: ${phone} , \nآدرس پست الکترونیکی: ${email} , \nپیام: ${message}`;
+  // ساختن پیام برای ارسال به تلگرام
+  const telegramMessage = `نام: ${name} , \nنام خانوادگی: ${lastname} , \nشماره تلفن: ${phone} , \nآدرس پست الکترونیکی: ${email} , \nپیام: ${message}`;
 
-    // ارسال پیام به تلگرام
-    sendMessageToTelegram(telegramMessage);
+  // ارسال پیام به تلگرام
+  sendMessageToTelegram(telegramMessage);
 
-    // ارسال داده‌ها به سرور برای ارسال ایمیل
-    fetch('/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: name,
-        lastname: lastname,
-        phone: phone,
-        email: email,
-        message: message
-      })
+  // ارسال داده‌ها به سرور برای ارسال ایمیل
+  fetch('/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      lastname: lastname,
+      phone: phone,
+      email: email,
+      message: message
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        console.log('Email sent successfully');
-      } else {
-        console.error('Error sending email:', data.message);
-      }
-    })
-    .catch(error => console.error('Error:', error));
-  });
-}
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      console.log('Email sent successfully');
+    } else {
+      console.error('Error sending email:', data.message);
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
+
 
 // Language selection popup
 document.addEventListener('DOMContentLoaded', () => {
   const languagePopup = document.querySelector('[data-language-popup]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
   const enBtn = document.querySelector('[data-lang-btn="en"]');
+  const currentLang = localStorage.getItem('language');
+  const isEnglishPage = window.location.pathname.includes('/en/');
+
+  if (!currentLang) {
+    if (isEnglishPage) {
+      window.location.replace('/');
+    } else {
+      languagePopup.classList.add('active');
+    }
+  } else if (currentLang === 'en' && !isEnglishPage) {
+    window.location.replace('/en/');
+  } else if (currentLang === 'fa' && isEnglishPage) {
+    window.location.replace('/');
+  }
 
   if (faBtn) {
     faBtn.addEventListener('click', () => {
+      localStorage.setItem('language', 'fa');
       window.location.href = '/';
     });
   }
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
+      localStorage.setItem('language', 'en');
       languagePopup.classList.remove('active');
     });
   }
