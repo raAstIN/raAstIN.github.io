@@ -186,21 +186,24 @@ form.addEventListener('submit', function (event) {
   .catch(error => console.error('Error:', error));
 });
 
-// Language selection popup
 document.addEventListener('DOMContentLoaded', () => {
   const languagePopup = document.querySelector('[data-language-popup]');
+  const languageOverlay = document.querySelector('[data-language-overlay]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
   const enBtn = document.querySelector('[data-lang-btn="en"]');
 
-  if (faBtn) {
-    faBtn.addEventListener('click', () => {
+  const closePopup = () => {
+    if (languagePopup) {
       languagePopup.classList.remove('active');
-    });
+    }
   }
+
+  if (faBtn) faBtn.addEventListener('click', closePopup);
+  if (languageOverlay) languageOverlay.addEventListener('click', closePopup);
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
-      window.location.href = '/en/';
+      window.location.href = './en/';
     });
   }
 });

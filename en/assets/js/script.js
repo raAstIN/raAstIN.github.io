@@ -65,7 +65,7 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "همه موارد") {
+    if (selectedValue === "all") {
       filterItems[i].classList.add("active");
     } else if (selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
@@ -186,21 +186,11 @@ form.addEventListener('submit', function (event) {
   .catch(error => console.error('Error:', error));
 });
 
-// Language selection popup
+// Redirect to Persian version if needed
 document.addEventListener('DOMContentLoaded', () => {
-  const languagePopup = document.querySelector('[data-language-popup]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
-  const enBtn = document.querySelector('[data-lang-btn="en"]');
-
   if (faBtn) {
-    faBtn.addEventListener('click', () => {
-      languagePopup.classList.remove('active');
-    });
-  }
-
-  if (enBtn) {
-    enBtn.addEventListener('click', () => {
-      window.location.href = '/en/';
-    });
+    // This button might exist in a shared header/footer for language switching
+    faBtn.addEventListener('click', () => window.location.href = '../');
   }
 });
