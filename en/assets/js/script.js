@@ -65,7 +65,7 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
+    if (selectedValue === "همه موارد") {
       filterItems[i].classList.add("active");
     } else if (selectedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
@@ -113,16 +113,18 @@ const pages = document.querySelectorAll("[data-page]");
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+
     for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
+      pages[j].classList.remove("active");
+      navigationLinks[j].classList.remove("active");
     }
+
+    this.classList.add("active");
+    const targetPage = document.querySelector(`[data-page="${this.innerHTML}"]`);
+    if (targetPage) {
+      targetPage.classList.add("active");
+    }
+    window.scrollTo(0, 0);
   });
 }
 
@@ -184,38 +186,21 @@ form.addEventListener('submit', function (event) {
   .catch(error => console.error('Error:', error));
 });
 
-
 // Language selection popup
 document.addEventListener('DOMContentLoaded', () => {
   const languagePopup = document.querySelector('[data-language-popup]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
   const enBtn = document.querySelector('[data-lang-btn="en"]');
-  const currentLang = localStorage.getItem('language');
-  const isEnglishPage = window.location.pathname.includes('/en/');
-
-  if (!currentLang) {
-    if (isEnglishPage) {
-      window.location.replace('/');
-    } else {
-      languagePopup.classList.add('active');
-    }
-  } else if (currentLang === 'en' && !isEnglishPage) {
-    window.location.replace('/en/');
-  } else if (currentLang === 'fa' && isEnglishPage) {
-    window.location.replace('/');
-  }
 
   if (faBtn) {
     faBtn.addEventListener('click', () => {
-      localStorage.setItem('language', 'fa');
-      window.location.href = '/';
+      languagePopup.classList.remove('active');
     });
   }
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
-      localStorage.setItem('language', 'en');
-      languagePopup.classList.remove('active');
+      window.location.href = '/en/';
     });
   }
 });
