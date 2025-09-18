@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
+      sessionStorage.setItem('langSelected', 'true');
       window.location.href = './en/';
     });
   }
