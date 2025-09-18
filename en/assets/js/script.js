@@ -114,19 +114,19 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let i = 0; i < pages.length; i++) {
-      if (navigationLinks[i].classList.contains("active")) {
-        navigationLinks[i].classList.remove("active");
-        pages[i].classList.remove("active");
-      }
+    for (let j = 0; j < pages.length; j++) {
+      pages[j].classList.remove("active");
+      navigationLinks[j].classList.remove("active");
     }
 
     this.classList.add("active");
-    pages[i].classList.add("active");
+    const targetPage = document.querySelector(`[data-page="${this.innerHTML}"]`);
+    if (targetPage) {
+      targetPage.classList.add("active");
+    }
     window.scrollTo(0, 0);
   });
 }
-
 // تابع ارسال پیام به ربات تلگرام
 const sendMessageToTelegram = function (message) {
   const chatId = '101533594'; // شناسه گروه یا چت کاربری مقصد
