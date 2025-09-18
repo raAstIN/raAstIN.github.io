@@ -1674,10 +1674,15 @@ textarea.form-input::-webkit-resizer { display: none; }
   justify-content: center;
   align-items: center;
   z-index: 30;
+
+  /* جلوگیری از دریافت کلیک روی کانتینر (باعث می‌شود کلیک بیرون پاپ‌آپ پاپ‌آپ را نبندد) */
+  pointer-events: none;
 }
 
 .language-popup-container.active {
   display: flex;
+  /* همچنان pointer-events: none تا کلیک روی فضای اطراف پاپ‌آپ به کانتینر نرسد */
+  pointer-events: none;
 }
 
 .language-popup-overlay {
@@ -1686,10 +1691,18 @@ textarea.form-input::-webkit-resizer { display: none; }
   left: 0;
   width: 100%;
   height: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+
+  /* نیمه‌شفاف به‌جای رنگ مات تا backdrop-filter بلر را نشان دهد */
+  background: rgba(17, 22, 26, 0.22);
+
+  /* افزایش مقدار بلر برای اثر واضح‌تر */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   z-index: 1;
+
+  /* اوورلی هم کلیک‌پذیر نباشد (کلیک روی آن باعث بسته‌شدن نشود) */
+  pointer-events: none;
 }
 
 .language-popup {
@@ -1700,6 +1713,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   box-shadow: var(--shadow-5);
   z-index: 2;
   text-align: center;
+
+  /* پاپ‌آپ باید همچنان قابل تعامل باشد */
+  pointer-events: auto;
 }
 
 .language-popup::before {
