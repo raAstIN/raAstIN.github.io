@@ -187,15 +187,20 @@ form.addEventListener('submit', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  const mainContent = document.querySelector('main');
   const languagePopup = document.querySelector('[data-language-popup]');
   const languageOverlay = document.querySelector('[data-language-overlay]');
   const faBtn = document.querySelector('[data-lang-btn="fa"]');
   const enBtn = document.querySelector('[data-lang-btn="en"]');
 
   const closePopup = () => {
-    if (languagePopup) {
-      languagePopup.classList.remove('active');
-    }
+    languagePopup?.classList.remove('active');
+    mainContent?.classList.add('loaded');
+  }
+
+  // If the popup is not active (e.g. on direct navigation to /en/ or after selection), show content.
+  if (!languagePopup || !languagePopup.classList.contains('active')) {
+    mainContent?.classList.add('loaded');
   }
 
   if (faBtn) faBtn.addEventListener('click', closePopup);

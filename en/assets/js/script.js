@@ -186,11 +186,16 @@ form.addEventListener('submit', function (event) {
   .catch(error => console.error('Error:', error));
 });
 
-// Redirect to Persian version if needed
 document.addEventListener('DOMContentLoaded', () => {
-  const faBtn = document.querySelector('[data-lang-btn="fa"]');
-  if (faBtn) {
-    // This button might exist in a shared header/footer for language switching
-    faBtn.addEventListener('click', () => window.location.href = '../');
+  // If the user lands directly on the English page (e.g., refresh, direct link),
+  // and not coming from the root page, redirect them to the root to select a language.
+  // `document.referrer` gives us the URL of the page that linked to the current page.
+  const isComingFromRoot = document.referrer.endsWith('/') || document.referrer === '';
+  const isRootPage = window.location.pathname === '/';
+
+  // A simple check: if there's no referrer, it's likely a direct entry or refresh.
+  // We redirect to root, where the language popup exists.
+  if (document.referrer === '' && !isRootPage) {
+    window.location.href = '../';
   }
 });
