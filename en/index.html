@@ -25,14 +25,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<script>
-  // Redirect to the main page on refresh to show the language popup again.
-  if (performance.getEntriesByType("navigation")[0].type === "reload") {
-    window.location.href = '/';
-  }
-</script>
-
 <body>
+
+  <!--
+    - #LANGUAGE POPUP
+  -->
+  <div class="language-popup-container" data-language-popup>
+    <div class="language-popup-overlay" data-language-overlay></div>
+
+    <div class="language-popup">
+      <div class="language-popup-content">
+        <h3 class="h3">
+          لطفا زبان موردنظر خود را انتخاب کنید
+          <br>
+          Please select your preferred language
+        </h3>
+
+        <div class="language-buttons">
+          <button class="language-btn" data-lang-btn="fa">
+            <span>🇮🇷</span>
+            فارسی
+          </button>
+          <button class="language-btn" data-lang-btn="en">
+            <span>🇬🇧</span>
+            English
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--
     - #MAIN
