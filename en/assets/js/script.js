@@ -120,13 +120,14 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
     this.classList.add("active");
-    const targetPage = document.querySelector(`[data-page="${this.innerHTML}"]`);
+    const targetPage = document.querySelector(`[data-page="${this.innerHTML.toLowerCase()}"]`);
     if (targetPage) {
       targetPage.classList.add("active");
     }
     window.scrollTo(0, 0);
   });
 }
+
 // تابع ارسال پیام به ربات تلگرام
 const sendMessageToTelegram = function (message) {
   const chatId = '101533594'; // شناسه گروه یا چت کاربری مقصد
