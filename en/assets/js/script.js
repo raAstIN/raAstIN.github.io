@@ -187,15 +187,19 @@ form.addEventListener('submit', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // If the user lands directly on the English page (e.g., refresh, direct link),
-  // and not coming from the root page, redirect them to the root to select a language.
-  // `document.referrer` gives us the URL of the page that linked to the current page.
-  const isComingFromRoot = document.referrer.endsWith('/') || document.referrer === '';
-  const isRootPage = window.location.pathname === '/';
+  // To ensure the user always sees the language selection popup on a fresh visit,
+  // we check if they navigated from the root page.
+  // This handles refreshes, direct links, and external links to the English page.
+  try {
+    const referrer = new URL(document.referrer);
+    const origin = new URL(window.location.href);
 
-  // A simple check: if there's no referrer, it's likely a direct entry or refresh.
-  // We redirect to root, where the language popup exists.
-  if (document.referrer === '' && !isRootPage) {
-    window.location.href = '../';
+    // If the referrer is not from the same site or is not the root path, redirect.
+    if (referrer.origin !== origin.origin || (referrer.pathname !== '/' && referrer.pathname !== '/index.html')) {
+      window.location.href = '../';
+    }
+  } catch (e) {
+    // If referrer is empty (direct access, refresh), it will throw an error. Redirect in that case too.
+    window.location.href = '../'
   }
 });
