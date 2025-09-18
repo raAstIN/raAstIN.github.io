@@ -51,7 +51,7 @@ if (overlay) overlay.addEventListener("click", testimonialsModalFunc);
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 if (select) select.addEventListener("click", function () { elementToggleFunc(this); });
@@ -127,25 +127,42 @@ const normalize = (s) => (s || "").toString().trim().toLowerCase();
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let j = 0; j < pages.length; j++) {
-      pages[j].classList.remove("active");
-      if (navigationLinks[j]) navigationLinks[j].classList.remove("active");
-    }
+    // remove active from all pages and nav links safely
+    Array.from(pages).forEach(p => p.classList.remove("active"));
+    Array.from(navigationLinks).forEach(l => l.classList.remove("active"));
 
     this.classList.add("active");
-    // try to match data-page by normalized textContent first, then by common english tokens
+
+    // Determine target page name in a robust way
     const label = normalize(this.textContent || this.innerText);
-    // Look for exact match among pages
-    let targetPage = null;
-    for (let k = 0; k < pages.length; k++) {
-      const pageName = normalize(pages[k].getAttribute('data-page'));
-      if (pageName === label) {
-        targetPage = pages[k];
-        break;
+    let targetName = null;
+
+    // 1) prefer explicit data-page on the link: data-page="resume"
+    if (this.dataset && this.dataset.page) {
+      targetName = normalize(this.dataset.page);
+    }
+
+    // 2) if link is an anchor to a hash like "#resume", use that
+    if (!targetName) {
+      const href = this.getAttribute && this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        targetName = normalize(href.slice(1));
       }
     }
-    // fallback: match common english labels to data-page values
-    if (!targetPage) {
+
+    // 3) try to match label to pages' data-page attributes
+    if (!targetName) {
+      for (let k = 0; k < pages.length; k++) {
+        const pageName = normalize(pages[k].getAttribute('data-page'));
+        if (pageName === label) {
+          targetName = pageName;
+          break;
+        }
+      }
+    }
+
+    // 4) fallback mapping for common labels (English and Persian)
+    if (!targetName) {
       const map = {
         'about': 'about',
         'resume': 'resume',
@@ -153,15 +170,18 @@ for (let i = 0; i < navigationLinks.length; i++) {
         'blog': 'blog',
         'contact': 'contact',
         'من کی ام؟': 'about',
-        'رزومه': 'resume'
+        'رزومه': 'resume',
+        'home': 'about'
       };
-      const mapped = map[label];
-      if (mapped) targetPage = document.querySelector(`[data-page="${mapped}"]`);
+      if (map[label]) targetName = map[label];
     }
 
-    if (targetPage) {
-      targetPage.classList.add("active");
+    // activate the matched page if found
+    if (targetName) {
+      const targetPage = document.querySelector(`[data-page="${targetName}"]`);
+      if (targetPage) targetPage.classList.add("active");
     }
+
     window.scrollTo(0, 0);
   });
 }
@@ -183,46 +203,48 @@ const sendMessageToTelegram = function (message) {
 }
 
 // اضافه کردن رویداد برای فرم ارسال پیام
-form.addEventListener('submit', function (event) {
-  event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
+if (form) {
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
 
-  // دریافت مقادیر فیلدهای فرم
-  const name = document.querySelector('input[name="name"]').value;
-  const lastname = document.querySelector('input[name="lastname"]').value;
-  const phone = document.querySelector('input[name="phone"]').value;
-  const email = document.querySelector('input[name="email"]').value;
-  const message = document.querySelector('textarea[name="message"]').value;
+    // دریافت مقادیر فیلدهای فرم
+    const name = document.querySelector('input[name="name"]').value;
+    const lastname = document.querySelector('input[name="lastname"]').value;
+    const phone = document.querySelector('input[name="phone"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
 
-  // ساختن پیام برای ارسال به تلگرام
-  const telegramMessage = `نام: ${name} , \nنام خانوادگی: ${lastname} , \nشماره تلفن: ${phone} , \nآدرس پست الکترونیکی: ${email} , \nپیام: ${message}`;
+    // ساختن پیام برای ارسال به تلگرام
+    const telegramMessage = `نام: ${name} , \nنام خانوادگی: ${lastname} , \nشماره تلفن: ${phone} , \nآدرس پست الکترونیکی: ${email} , \nپیام: ${message}`;
 
-  // ارسال پیام به تلگرام
-  sendMessageToTelegram(telegramMessage);
+    // ارسال پیام به تلگرام
+    sendMessageToTelegram(telegramMessage);
 
-  // ارسال داده‌ها به سرور برای ارسال ایمیل
-  fetch('/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: name,
-      lastname: lastname,
-      phone: phone,
-      email: email,
-      message: message
+    // ارسال داده‌ها به سرور برای ارسال ایمیل
+    fetch('/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        lastname: lastname,
+        phone: phone,
+        email: email,
+        message: message
+      })
     })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.status === 'success') {
-      console.log('Email sent successfully');
-    } else {
-      console.error('Error sending email:', data.message);
-    }
-  })
-  .catch(error => console.error('Error:', error));
-});
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        console.log('Email sent successfully');
+      } else {
+        console.error('Error sending email:', data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  });
+}
 
 // Language selection popup
 document.addEventListener('DOMContentLoaded', () => {
