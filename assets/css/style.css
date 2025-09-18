@@ -1664,81 +1664,59 @@ textarea.form-input::-webkit-resizer { display: none; }
   #LANGUAGE POPUP
 \*-----------------------------------*/
 
-/* کانتینر اصلی: هنگام فعال بودن نمایش می‌دهد، ولی کلیک‌های خارج به کانتینر نمی‌رسد */
+/* The main container, fixed to the viewport and centered. */
 .language-popup-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 30;
-
-  /* جلوگیری از کلیک روی پس‌زمینه‌ی اطراف (تا کلیک بیرون پاپ‌آپ بسته‌شدن نداشته باشد) */
-  pointer-events: none;
 }
 
 .language-popup-container.active {
   display: flex;
-  pointer-events: none; /* کلیک بیرون به کانتینر/اوورلی نمی‌رسد */
 }
 
-/* اوورلی: ساده، شفاف و موثر برای backdrop-filter */
+/* The overlay creates the blurred background effect. */
 .language-popup-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-
-  /* Tint یکنواخت و شفاف تا بلر پشت آن نمایان شود */
-  background: rgba(8, 10, 12, 0.30);
-
-  /* افکت بلر واقعی */
-  backdrop-filter: blur(14px) saturate(130%) brightness(0.88);
-  -webkit-backdrop-filter: blur(14px) saturate(130%) brightness(0.88);
-
-  /* اوورلی نباید کلیک بپذیرد (تا بسته‌شدن با کلیک جلوگیری شود) */
-  pointer-events: none;
-
-  /* حاشیهٔ ظریف برای جلوگیری از ظاهر کاملاً تخت */
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-  will-change: backdrop-filter;
+  background-color: hsla(240, 1%, 17%, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* خود پاپ‌آپ: پس‌زمینهٔ نیمه‌شفاف، حاشیهٔ رقیق و سایه */
+/* The popup box itself, styled to match the site's theme. */
 .language-popup {
   position: relative;
   z-index: 2;
-
-  background: rgba(18, 20, 22, 0.80);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 2px 10px rgba(0,0,0,0.35);
-
-  padding: 30px;
   text-align: center;
-
-  /* عنصر باید تعامل‌پذیر باشد */
-  pointer-events: auto;
-
-  /* اطمینان از اینکه خود پاپ‌آپ بلرِ دوباره‌ای ندارد */
-  backdrop-filter: none;
+  background: var(--border-gradient-onyx);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-5);
 }
 
-/* لایهٔ داخلی گرادیان خیلی کم‌رنگ تا ظاهر کامل و یکنواخت باشد */
 .language-popup::before {
   content: "";
   position: absolute;
   inset: 1px;
+  background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
-  background: var(--bg-gradient-jet);
-  opacity: 0.06; /* خیلی کمتر تا گرادیانت باعث مات شدن بلر نشود */
 }
 
-/* دکمه‌ها و محتوا */
 .language-popup-content h3 {
   line-height: 1.6;
   margin-bottom: 25px;
-  color: var(--white-2);
 }
 
 .language-buttons {
@@ -1748,7 +1726,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .language-btn {
-  background: rgba(255,255,255,0.03);
+  background: var(--onyx);
   color: var(--white-2);
   padding: 10px 20px;
   border-radius: 12px;
@@ -1757,13 +1735,11 @@ textarea.form-input::-webkit-resizer { display: none; }
   align-items: center;
   gap: 10px;
   transition: var(--transition-1);
-  border: 1px solid rgba(255,255,255,0.04);
-  pointer-events: auto;
 }
 
 .language-btn:hover {
   color: var(--orange-yellow-crayola);
-  background: rgba(255,255,255,0.045);
+  background: hsl(240, 1%, 22%);
 }
 
 
