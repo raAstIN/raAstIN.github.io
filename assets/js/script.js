@@ -204,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (faBtn) faBtn.addEventListener('click', closePopup);
-  if (languageOverlay) languageOverlay.addEventListener('click', closePopup);
 
   if (enBtn) {
     enBtn.addEventListener('click', () => {
