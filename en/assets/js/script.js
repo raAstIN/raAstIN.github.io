@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 // element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+const elementToggleFunc = function (elem) { if (elem) elem.classList.toggle("active"); }
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+// sidebar toggle functionality for mobile (guard)
+if (sidebarBtn) sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
@@ -21,26 +21,32 @@ const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
-// modal toggle function
+// modal toggle function (guard)
 const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  if (modalContainer) modalContainer.classList.toggle("active");
+  if (overlay) overlay.classList.toggle("active");
 }
 
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
+  // guard: ensure required modal elements exist before reading
   testimonialsItem[i].addEventListener("click", function () {
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+    const avatar = this.querySelector("[data-testimonials-avatar]");
+    const title = this.querySelector("[data-testimonials-title]");
+    const text = this.querySelector("[data-testimonials-text]");
+    if (modalImg && avatar) {
+      modalImg.src = avatar.src || modalImg.src;
+      modalImg.alt = avatar.alt || modalImg.alt;
+    }
+    if (modalTitle && title) modalTitle.innerHTML = title.innerHTML;
+    if (modalText && text) modalText.innerHTML = text.innerHTML;
     testimonialsModalFunc();
   });
 }
 
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+// add click event to modal close button (guard)
+if (modalCloseBtn) modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+if (overlay) overlay.addEventListener("click", testimonialsModalFunc);
 
 // custom select variables
 const select = document.querySelector("[data-select]");
@@ -48,13 +54,14 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+if (select) select.addEventListener("click", function () { elementToggleFunc(this); });
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    const raw = this.innerText || this.textContent || "";
+    let selectedValue = raw.toLowerCase().trim();
+    if (selectValue) selectValue.innerText = raw.trim();
     elementToggleFunc(select);
     filterFunc(selectedValue);
   });
@@ -65,9 +72,10 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
+    const cat = (filterItems[i].dataset.category || "").toLowerCase();
+    if (selectedValue === "all" || selectedValue === "همه موارد") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue === cat) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -76,14 +84,15 @@ const filterFunc = function (selectedValue) {
 }
 
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+let lastClickedBtn = filterBtn[0] || null;
 
 for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    const raw = this.innerText || this.textContent || "";
+    let selectedValue = raw.toLowerCase().trim();
+    if (selectValue) selectValue.innerText = raw.trim();
     filterFunc(selectedValue);
-    lastClickedBtn.classList.remove("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
   });
@@ -97,7 +106,8 @@ const formBtn = document.querySelector("[data-form-btn]");
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-    // check form validation
+    // check form validation (guard)
+    if (!form || !formBtn) return;
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -110,17 +120,45 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// helper to normalize text
+const normalize = (s) => (s || "").toString().trim().toLowerCase();
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
     for (let j = 0; j < pages.length; j++) {
       pages[j].classList.remove("active");
-      navigationLinks[j].classList.remove("active");
+      if (navigationLinks[j]) navigationLinks[j].classList.remove("active");
     }
 
     this.classList.add("active");
-    const targetPage = document.querySelector(`[data-page="${this.innerHTML.toLowerCase()}"]`);
+    // try to match data-page by normalized textContent first, then by common english tokens
+    const label = normalize(this.textContent || this.innerText);
+    // Look for exact match among pages
+    let targetPage = null;
+    for (let k = 0; k < pages.length; k++) {
+      const pageName = normalize(pages[k].getAttribute('data-page'));
+      if (pageName === label) {
+        targetPage = pages[k];
+        break;
+      }
+    }
+    // fallback: match common english labels to data-page values
+    if (!targetPage) {
+      const map = {
+        'about': 'about',
+        'resume': 'resume',
+        'portfolio': 'portfolio',
+        'blog': 'blog',
+        'contact': 'contact',
+        'من کی ام؟': 'about',
+        'رزومه': 'resume'
+      };
+      const mapped = map[label];
+      if (mapped) targetPage = document.querySelector(`[data-page="${mapped}"]`);
+    }
+
     if (targetPage) {
       targetPage.classList.add("active");
     }
