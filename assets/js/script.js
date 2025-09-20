@@ -42,6 +42,49 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
 
+// portfolio modal variables
+const portfolioItems = document.querySelectorAll("[data-portfolio-item]");
+const portfolioModalContainer = document.querySelector("[data-portfolio-modal-container]");
+const portfolioModalCloseBtn = document.querySelector("[data-portfolio-modal-close-btn]");
+const portfolioOverlay = document.querySelector("[data-portfolio-overlay]");
+
+// modal variable
+const portfolioModalImg = document.querySelector("[data-portfolio-modal-img]");
+const portfolioModalTitle = document.querySelector("[data-portfolio-modal-title]");
+const portfolioModalCategory = document.querySelector("[data-portfolio-modal-category]");
+const portfolioModalLink = document.querySelector("[data-portfolio-modal-link]");
+
+// modal toggle function
+const portfolioModalFunc = function () {
+  portfolioModalContainer.classList.toggle("active");
+  portfolioOverlay.classList.toggle("active");
+}
+
+// add click event to all modal items
+portfolioItems.forEach(item => {
+  item.addEventListener("click", function () {
+    const link = this.dataset.portfolioLink;
+
+    portfolioModalImg.src = this.querySelector(".project-img img").src;
+    portfolioModalImg.alt = this.querySelector(".project-img img").alt;
+    portfolioModalTitle.innerHTML = this.querySelector(".project-title").innerHTML;
+    portfolioModalCategory.innerHTML = this.querySelector(".project-category").innerHTML;
+
+    if (link && link !== '#') {
+      portfolioModalLink.href = link;
+      portfolioModalLink.classList.remove('disabled');
+    } else {
+      portfolioModalLink.href = '#';
+      portfolioModalLink.classList.add('disabled');
+    }
+    portfolioModalFunc();
+  });
+});
+
+// add click event to modal close button
+portfolioModalCloseBtn.addEventListener("click", portfolioModalFunc);
+portfolioOverlay.addEventListener("click", portfolioModalFunc);
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
@@ -209,3 +252,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Function to animate counter
+const animateValue = (obj, start, end, duration, suffix) => {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const currentValue = Math.floor(progress * (end - start) + start);
+    obj.textContent = currentValue + suffix;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Scroll reveal functionality
+const revealElements = document.querySelectorAll("[data-reveal]");
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const isSkillItem = el.classList.contains('skills-item');
+
+      // Stagger animation for service, timeline, skill and project items
+      if (el.classList.contains('service-item') || el.classList.contains('timeline-item') || isSkillItem) {
+        const delay = Array.from(el.parentNode.children).indexOf(el) * 100;
+        el.style.transitionDelay = `${delay}ms`;
+      }
+
+      if (el.classList.contains('project-item')) {
+        const delay = Array.from(el.parentNode.children).indexOf(el) * 50; // Faster stagger for projects
+        el.style.transitionDelay = `${delay}ms`;
+      }
+
+      // Animate progress bars and counters
+      if (isSkillItem) {
+        const progressFill = el.querySelector('.skill-progress-fill');
+        const dataEl = el.querySelector('data');
+        progressFill.style.width = progressFill.dataset.progress + '%';
+        animateValue(dataEl, 0, parseInt(dataEl.value), 1500, '%');
+      }
+      el.classList.add("revealed");
+      observer.unobserve(el);
+    }
+  });
+}, {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.02
+});
+
+revealElements.forEach(el => revealObserver.observe(el));

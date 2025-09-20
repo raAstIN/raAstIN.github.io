@@ -72,29 +72,33 @@
 
           <li class="contact-item">
 
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+            <a href="mailto:therealseyed@gmail.com" class="contact-link-wrapper">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
 
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
 
-              <a href="mailto:therealseyed@gmail.com" class="contact-link">therealseyed@gmail.com</a>
-            </div>
+                <span class="contact-link">therealseyed@gmail.com</span>
+              </div>
+            </a>
 
           </li>
 
           <li class="contact-item">
 
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
+            <a href="tel:+989333006301" class="contact-link-wrapper">
+              <div class="icon-box">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
 
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
 
-              <a href="tel:+989333006301" class="contact-link">+98 933 300 6301</a>
-            </div>
+                <span class="contact-link">+98 933 300 6301</span>
+              </div>
+            </a>
 
           </li>
 
@@ -209,19 +213,19 @@
       <article class="about active" data-page="About">
 
         <header>
-          <h2 class="h2 article-title">About Me</h2>
+          <h2 class="h2 article-title" data-reveal>About Me</h2>
         </header>
 
-        <section class="about-text">
+        <section class="about-text" data-reveal>
           <p>
             I'm a developer and designer who navigates the world of code, pixels, and content. For me, a project isn't just a set of code; it's a complete experience. That's why I focus on three core areas: <strong>programming</strong> to build strong logic, <strong>design</strong> to create a beautiful and user-friendly interface, and <strong>content creation</strong> to tell the product's story.
           </p>
 
-          <p>
+          <p data-reveal>
             This journey began with teenage curiosity and participation in science festivals, and today it has led to building real web applications, designing for businesses, and managing digital projects. Every project, from a simple Telegram bot to a complete e-commerce website, is a new opportunity for me to turn challenges into creative solutions.
           </p>
 
-          <p>
+          <p data-reveal>
             My ultimate goal is to create products that don't just "work," but also give the user a good feeling. I'm looking to collaborate on projects where I can create real and lasting value by combining technology and creativity.
           </p>
         </section>
@@ -232,11 +236,11 @@
 
         <section class="service">
 
-          <h3 class="h3 service-title">What I'm Doing</h3>
+          <h3 class="h3 service-title" data-reveal>What I'm Doing</h3>
 
           <ul class="service-list">
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-design.svg
@@ -253,7 +257,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
@@ -269,7 +273,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-app.svg" alt="Web App Development icon" width="40">
@@ -285,7 +289,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-design.svg
@@ -302,7 +306,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-design.svg
@@ -319,7 +323,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
@@ -335,7 +339,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
@@ -351,7 +355,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-reveal>
 
               <div class="service-icon-box">
                 <img src="./assets/images/icon-design.svg
@@ -378,9 +382,9 @@
 
         <section class="clients">
 
-          <h3 class="h3 clients-title">My Tools</h3>
+          <h3 class="h3 clients-title" data-reveal>My Tools</h3>
 
-          <ul class="clients-list has-scrollbar">
+          <ul class="clients-list has-scrollbar" data-reveal>
 
             <li class="clients-item">
               <a href="#">
@@ -490,11 +494,11 @@
 
         <section class="skill">
 
-          <h3 class="h3 skills-title">My Skills</h3>
+          <h3 class="h3 skills-title" data-reveal>My Skills</h3>
 
-          <ul class="skills-list content-card">
+          <ul class="skills-list content-card" data-reveal>
 
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Web Design & Web App Development</h5>
@@ -502,11 +506,11 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
+                <div class="skill-progress-fill" data-progress="90"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Desktop Development</h5>
@@ -514,11 +518,11 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
+                <div class="skill-progress-fill" data-progress="85"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Bot Development</h5>
@@ -526,23 +530,23 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
+                <div class="skill-progress-fill" data-progress="80"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Graphic Design</h5>
-                <data value="70">70%</data>
+                <data value="75">75%</data>
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
+                <div class="skill-progress-fill" data-progress="75"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">UI/UX Design</h5>
@@ -550,11 +554,11 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
+                <div class="skill-progress-fill" data-progress="70"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Video Editing</h5>
@@ -562,11 +566,11 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 65%;"></div>
+                <div class="skill-progress-fill" data-progress="65"></div>
               </div>
 
             </li>
-            <li class="skills-item">
+            <li class="skills-item" data-reveal>
 
               <div class="title-wrapper">
                 <h5 class="h5">Security & Networking</h5>
@@ -574,7 +578,7 @@
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 55%;"></div>
+                <div class="skill-progress-fill" data-progress="55"></div>
               </div>
 
             </li>
@@ -644,12 +648,12 @@
       <article class="resume" data-page="Resume">
 
         <header>
-          <h2 class="h2 article-title">My Resume</h2>
+          <h2 class="h2 article-title" data-reveal>My Resume</h2>
         </header>
 
         <section class="timeline">
 
-          <div class="title-wrapper">
+          <div class="title-wrapper" data-reveal>
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
@@ -659,7 +663,7 @@
 
           <ol class="timeline-list">
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Shahid Beheshti High School (SAMPAD)</h4>
 
@@ -671,7 +675,7 @@
 
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">What's Next...</h4>
 
@@ -685,7 +689,7 @@
 
         <section class="timeline">
 
-          <div class="title-wrapper">
+          <div class="title-wrapper" data-reveal>
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
@@ -695,7 +699,7 @@
 
           <ol class="timeline-list">
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Participation in NetKa 19 Conference</h4>
 
@@ -707,7 +711,7 @@
 
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Provincial Gold at Kharazmi Festival</h4>
 
@@ -719,7 +723,7 @@
 
             </li>
             
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Participation in NetKa 20 Conference</h4>
 
@@ -731,7 +735,7 @@
 
             </li>
             
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Participation in NetKa 21 Conference</h4>
 
@@ -742,7 +746,7 @@
               </p>
 
             </li>
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Organizing NetKa 22 Conference</h4>
 
@@ -753,7 +757,7 @@
               </p>
 
             </li>
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Provincial Gold at Farda Festival</h4>
 
@@ -764,7 +768,7 @@
               </p>
 
             </li>
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Participation in SAMPAD Achievements Conference</h4>
 
@@ -776,7 +780,7 @@
 
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Interview with Isfahan Education Magazine</h4>
 
@@ -788,7 +792,7 @@
 
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">Full Design and Support for Maral Setareh Website</h4>
 
@@ -800,7 +804,31 @@
 
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" data-reveal>
+
+              <h4 class="h4 timeline-item-title">National Silver Medal at Farda Cultural and Arts Festival</h4>
+
+              <span>2024 — 2025</span>
+
+              <p class="timeline-text" dir="ltr" align="left">
+                Won the national silver medal in the website design category for the "Maral Setareh Website" and "Makhmali Introduction Blog" projects.
+              </p>
+
+            </li>
+
+            <li class="timeline-item" data-reveal>
+
+              <h4 class="h4 timeline-item-title">Provincial Gold Medal at Iran Schools' Cultural and Arts Festival</h4>
+
+              <span>2024 — 2025</span>
+
+              <p class="timeline-text" dir="ltr" align="left">
+                Won the gold medal in the poster and graphic logo design category.
+              </p>
+
+            </li>
+
+            <li class="timeline-item" data-reveal>
 
               <h4 class="h4 timeline-item-title">What's Next...</h4>
 
@@ -901,7 +929,7 @@
           </div>
 
           <ul class="project-list">
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="#">
 
                 <figure class="project-img">
@@ -919,7 +947,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="https://gilantire.ir" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -937,7 +965,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="application">
+            <li class="project-item  active" data-filter-item data-category="application" data-reveal>
               <a href="#">
 
                 <figure class="project-img">
@@ -955,7 +983,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="training">
+            <li class="project-item  active" data-filter-item data-category="training" data-reveal>
               <a href="./assets/images/project-41.pdf">
 
                 <figure class="project-img">
@@ -973,7 +1001,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-42.jpeg" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -991,7 +1019,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="#">
 
                 <figure class="project-img">
@@ -1009,7 +1037,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-39.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1027,7 +1055,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="video editing">
+            <li class="project-item  active" data-filter-item data-category="video editing" data-reveal>
               <a href="https://t.me/Net22Ka/152" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1045,7 +1073,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="https://shikpooshan.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1063,7 +1091,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-29.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1081,7 +1109,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="https://kimiasport.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1099,7 +1127,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="https://maralsetareh.com" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1117,7 +1145,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="application">
+            <li class="project-item  active" data-filter-item data-category="application" data-reveal>
               <a href="http://metoo.freehost.io" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1135,7 +1163,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="website">
+            <li class="project-item  active" data-filter-item data-category="website" data-reveal>
               <a href="https://AlphaHub.vercel.app" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1153,7 +1181,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="bot">
+            <li class="project-item  active" data-filter-item data-category="bot" data-reveal>
               <a href="https://t.me/AlphA_xRobot" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1171,7 +1199,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="application">
+            <li class="project-item  active" data-filter-item data-category="application" data-reveal>
               <a href="#">
 
                 <figure class="project-img">
@@ -1189,7 +1217,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-16.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1207,7 +1235,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-19.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1225,7 +1253,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-28.pdf" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1243,7 +1271,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-17.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1261,7 +1289,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-33.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1279,7 +1307,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-21.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1297,7 +1325,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-34.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1315,7 +1343,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-20.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1333,7 +1361,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-36.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1351,7 +1379,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-22.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1369,7 +1397,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-35.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1387,7 +1415,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-23.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1405,7 +1433,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-24.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1423,7 +1451,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-25.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1441,7 +1469,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-38.pdf" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
@@ -1459,7 +1487,7 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="design & graphics">
+            <li class="project-item  active" data-filter-item data-category="design & graphics" data-reveal>
               <a href="https://raAstIN.github.io/assets/images/project-27.png" target="_blank" rel="noopener noreferrer">
 
                 <figure class="project-img">
