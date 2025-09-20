@@ -1664,90 +1664,59 @@ textarea.form-input::-webkit-resizer { display: none; }
   #LANGUAGE POPUP
 \*-----------------------------------*/
 
-/* کانتینر اصلی: هنگام فعال بودن نمایش می‌دهد، ولی کلیک‌های خارج به کانتینر نمی‌رسد */
+/* The main container, fixed to the viewport and centered. */
 .language-popup-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 30;
-
-  /* جلوگیری از کلیک روی پس‌زمینه‌ی اطراف (تا کلیک بیرون پاپ‌آپ بسته‌شدن نداشته باشد) */
-  pointer-events: none;
 }
 
 .language-popup-container.active {
   display: flex;
-  pointer-events: none; /* اجازه نمی‌دهد کلیک به اوورلی یا کانتینر برسد */
 }
 
-/* اوورلی: شفاف با گرادیانت رقیق + backdrop-filter برای نمایش محتوای پشت به صورت بلر */
+/* The overlay creates the blurred background effect. */
 .language-popup-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-
-  /* بسیار رقیق و شفاف — نباید کاملاً مات باشد */
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.02) 0%,
-    rgba(10,12,15,0.18) 100%
-  );
-
-  /* اینجا افکت واقعی بلر اعمال می‌شود */
-  backdrop-filter: blur(14px) saturate(125%) contrast(0.95);
-  -webkit-backdrop-filter: blur(14px) saturate(125%) contrast(0.95);
-
-  /* اوورلی نباید دریافت‌کننده کلیک باشد (تا بسته‌شدن با کلیک جلوگیری شود) */
-  pointer-events: none;
-
-  /* کمی گرادیان نوردهی برای عمق بهتر */
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-  will-change: backdrop-filter;
+  background-color: hsla(240, 1%, 17%, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* خود پاپ‌آپ: نیمه‌شفاف با حاشیهٔ رقیق و سایه برای حس لایه‌ای */
+/* The popup box itself, styled to match the site's theme. */
 .language-popup {
   position: relative;
   z-index: 2;
-
-  /* پس‌زمینه‌ی پاپ‌آپ اندکی شفاف تا حاشیه و بافت ملایم دیده شود */
-  background: rgba(18, 20, 22, 0.75);
-
-  /* حاشیهٔ نیمه‌شفاف به جای رنگ سخت */
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 20px;
-
-  /* سایه نرم برای جدا کردن از پس‌زمینهٔ بلر */
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.35);
-
-  padding: 30px;
   text-align: center;
-
-  /* این عنصر باید تعامل‌پذیر باشد */
-  pointer-events: auto;
-
-  /* برای روان بودن رندر افکت */
-  backdrop-filter: none;
+  background: var(--border-gradient-onyx);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-5);
 }
 
-/* لایهٔ داخلی قبلی (گرادیان) را حفظ می‌کنیم ولی آن را روی پس‌زمینهٔ نیمه‌شفاف اعمال می‌کنیم */
 .language-popup::before {
   content: "";
   position: absolute;
   inset: 1px;
+  background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
-  background: var(--bg-gradient-jet);
-  opacity: 0.12; /* خیلی کم تا تک‌رنگ به نظر نرسد ولی گرادیانت حفظ شود */
 }
 
-/* محتوا و دکمه‌ها بدون تغییر زیاد، فقط اطمینان از تعامل‌پذیری */
 .language-popup-content h3 {
   line-height: 1.6;
   margin-bottom: 25px;
-  color: var(--white-2);
 }
 
 .language-buttons {
@@ -1757,7 +1726,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .language-btn {
-  background: rgba(255,255,255,0.03);
+  background: var(--onyx);
   color: var(--white-2);
   padding: 10px 20px;
   border-radius: 12px;
@@ -1766,13 +1735,11 @@ textarea.form-input::-webkit-resizer { display: none; }
   align-items: center;
   gap: 10px;
   transition: var(--transition-1);
-  border: 1px solid rgba(255,255,255,0.04);
-  pointer-events: auto;
 }
 
 .language-btn:hover {
   color: var(--orange-yellow-crayola);
-  background: rgba(255,255,255,0.04);
+  background: hsl(240, 1%, 22%);
 }
 
 
