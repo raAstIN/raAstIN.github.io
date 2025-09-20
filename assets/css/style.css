@@ -212,12 +212,18 @@ article { display: none; }
 
 article.active {
   display: block;
-  animation: fade 0.5s ease backwards;
+  animation: fadeInUp 0.5s ease-out backwards;
 }
 
-@keyframes fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .h2,
@@ -309,7 +315,7 @@ main {
 
 main.loaded {
   visibility: visible;
-  animation: fade 0.5s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
 
@@ -1258,18 +1264,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .blog-banner-box { height: auto; }
 
 }
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-
-
 
 /**
  * responsive larger than 580px screen
