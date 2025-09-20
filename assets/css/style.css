@@ -1106,14 +1106,14 @@ main.loaded {
   border: 1px solid var(--jet);
   border-radius: 14px;
   box-shadow: var(--shadow-5);
-  transform: scale(1.2);
+  transform: translateY(30px) scale(0.95);
   opacity: 0;
-  transition: var(--transition-1);
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
   z-index: 2;
 }
 
 .modal-container.active .portfolio-modal {
-  transform: scale(1);
+  transform: translateY(0) scale(1);
   opacity: 1;
 }
 

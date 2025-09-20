@@ -68,7 +68,14 @@ portfolioItems.forEach(item => {
     portfolioModalImg.alt = this.querySelector(".project-img img").alt;
     portfolioModalTitle.innerHTML = this.querySelector(".project-title").innerHTML;
     portfolioModalCategory.innerHTML = this.querySelector(".project-category").innerHTML;
-    portfolioModalLink.href = link;
+
+    if (link && link !== '#') {
+      portfolioModalLink.href = link;
+      portfolioModalLink.classList.remove('disabled');
+    } else {
+      portfolioModalLink.href = '#';
+      portfolioModalLink.classList.add('disabled');
+    }
     portfolioModalFunc();
   });
 });
