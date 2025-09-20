@@ -544,6 +544,12 @@ main.loaded {
   z-index: 1;
 }
 
+.service-item:hover {
+  transform: translateY(-5px);
+  background: var(--bg-gradient-yellow-1);
+  box-shadow: var(--shadow-4);
+}
+
 .service-item::before {
   content: "";
   position: absolute;
