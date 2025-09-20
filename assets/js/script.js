@@ -195,13 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closePopup = () => {
     languagePopup?.classList.remove('active');
-    mainContent?.classList.add('loaded');
   }
 
-  // If the popup is not active (e.g. on direct navigation to /en/ or after selection), show content.
-  if (!languagePopup || !languagePopup.classList.contains('active')) {
-    mainContent?.classList.add('loaded');
-  }
+  // Show and animate main content immediately on page load, behind the popup.
+  mainContent?.classList.add('loaded');
 
   if (faBtn) faBtn.addEventListener('click', closePopup);
 
