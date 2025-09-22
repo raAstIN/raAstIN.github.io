@@ -11,36 +11,41 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
 // testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
+const blogItems = document.querySelectorAll("[data-blog-item]");
+const blogModalContainer = document.querySelector("[data-blog-modal-container]");
+const blogModalCloseBtn = document.querySelector("[data-blog-modal-close-btn]");
+const blogOverlay = document.querySelector("[data-blog-overlay]");
 
 // modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
+const blogModalImg = document.querySelector("[data-blog-modal-img]");
+const blogModalTitle = document.querySelector("[data-blog-modal-title]");
+const blogModalCategory = document.querySelector("[data-blog-modal-category]");
+const blogModalTime = document.querySelector("[data-blog-modal-time]");
+const blogModalDesc = document.querySelector("[data-blog-modal-desc]");
 
 // modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+const blogModalFunc = function () {
+  blogModalContainer.classList.toggle("active");
+  blogOverlay.classList.toggle("active");
 }
 
 // add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-  testimonialsItem[i].addEventListener("click", function () {
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-    testimonialsModalFunc();
+blogItems.forEach(item => {
+  item.addEventListener("click", function () {
+    blogModalImg.src = this.querySelector(".blog-banner-box img").src;
+    blogModalImg.alt = this.querySelector(".blog-banner-box img").alt;
+    blogModalTitle.innerHTML = this.querySelector(".blog-item-title").innerHTML;
+    blogModalCategory.innerHTML = this.querySelector(".blog-category").innerHTML;
+    blogModalTime.innerHTML = this.querySelector("time").innerHTML;
+    blogModalTime.dateTime = this.querySelector("time").dateTime;
+    blogModalDesc.innerHTML = this.querySelector(".blog-description").innerHTML;
+    blogModalFunc();
   });
-}
+});
 
 // add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+blogModalCloseBtn.addEventListener("click", blogModalFunc);
+blogOverlay.addEventListener("click", blogModalFunc);
 
 // portfolio modal variables
 const portfolioItems = document.querySelectorAll("[data-portfolio-item]");
@@ -52,6 +57,7 @@ const portfolioOverlay = document.querySelector("[data-portfolio-overlay]");
 const portfolioModalImg = document.querySelector("[data-portfolio-modal-img]");
 const portfolioModalTitle = document.querySelector("[data-portfolio-modal-title]");
 const portfolioModalCategory = document.querySelector("[data-portfolio-modal-category]");
+const portfolioModalDesc = document.querySelector(".portfolio-modal-desc");
 const portfolioModalLink = document.querySelector("[data-portfolio-modal-link]");
 
 // modal toggle function
@@ -69,6 +75,7 @@ portfolioItems.forEach(item => {
     portfolioModalImg.alt = this.querySelector(".project-img img").alt;
     portfolioModalTitle.innerHTML = this.querySelector(".project-title").innerHTML;
     portfolioModalCategory.innerHTML = this.querySelector(".project-category").innerHTML;
+    portfolioModalDesc.innerHTML = this.querySelector(".project-description").innerHTML;
 
     if (link && link !== '#') {
       portfolioModalLink.href = link;
