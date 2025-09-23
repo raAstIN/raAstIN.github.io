@@ -313,3 +313,20 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 });
 
 revealElements.forEach(el => revealObserver.observe(el));
+
+// Image loading animation
+const portfolioImages = document.querySelectorAll('.project-img img');
+
+portfolioImages.forEach(img => {
+  const parent = img.parentElement;
+  parent.classList.add('loading');
+  if (img.complete) {
+    parent.classList.remove('loading');
+    parent.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => {
+      parent.classList.remove('loading');
+      parent.classList.add('loaded');
+    });
+  }
+});
