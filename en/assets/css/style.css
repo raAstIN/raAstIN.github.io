@@ -333,7 +333,7 @@ main {
 
 .sidebar {
   margin-bottom: 15px;
-  max-height: 112px;
+  max-height: 170px;
   overflow: hidden;
   transition: var(--transition-2);
 }
@@ -361,7 +361,7 @@ main {
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--eerie-black-1);
+  background: var(--jet);
   border-radius: inherit;
   z-index: -1;
 }
@@ -387,7 +387,7 @@ main {
 
 .download-cv-btn ion-icon { font-size: 18px; }
 
-.sidebar.active { max-height: 405px; }
+.sidebar.active { max-height: 465px; }
 
 .sidebar-info {
   position: relative;
@@ -1561,7 +1561,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar {
-    max-height: 180px;
+    max-height: 240px;
     margin-bottom: 30px;
   }
 
@@ -1590,7 +1590,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .info_more-btn ion-icon { display: none; }
 
-  .separator { margin: 32px 0; }
+  .separator { margin: 24px 0; }
 
   .contacts-list { gap: 20px; }
 
@@ -2061,7 +2061,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     max-height: max-content;
     height: 100%;
     margin-bottom: 0;
-    padding-top: 60px;
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
