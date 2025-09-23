@@ -460,6 +460,11 @@ main.loaded {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  transition: var(--transition-1);
+}
+
+.contact-item:hover .contact-info :is(.contact-link, time, address) {
+  color: var(--orange-yellow-crayola);
 }
 
 .contact-info address { font-style: normal; }
@@ -610,6 +615,10 @@ main.loaded {
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
   line-height: 1.6;
+}
+
+.timeline-item:hover .timeline-item-title {
+  color: var(--orange-yellow-crayola);
 }
 
 .skills-item:hover .title-wrapper .h5 {
@@ -855,6 +864,7 @@ main.loaded {
   font-size: var(--fs-6);
   line-height: 1.3;
   margin-bottom: 7px;
+  transition: var(--transition-1);
 }
 
 .timeline-list span {

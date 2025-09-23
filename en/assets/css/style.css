@@ -453,6 +453,11 @@ main {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  transition: var(--transition-1);
+}
+
+.contact-item:hover .contact-info :is(.contact-link, time, address) {
+  color: var(--orange-yellow-crayola);
 }
 
 .contact-info address { font-style: normal; }
