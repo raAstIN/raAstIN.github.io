@@ -330,3 +330,50 @@ portfolioImages.forEach(img => {
     });
   }
 });
+
+// Auto-scrolling clients list
+const clientsLists = document.querySelectorAll('.clients-list');
+
+clientsLists.forEach(list => {
+  const listContent = Array.from(list.children);
+  listContent.forEach(item => {
+    const duplicatedItem = item.cloneNode(true);
+    duplicatedItem.setAttribute('aria-hidden', true);
+    list.appendChild(duplicatedItem);
+  });
+});
+
+clientsLists.forEach(list => {
+  let animationFrameId;
+  let isHovering = false;
+  let isUserScrolling = false;
+  let scrollTimeout;
+
+  function autoScroll() {
+    if (!isHovering && !isUserScrolling) {
+      list.scrollLeft += 0.5; // Adjust speed here
+      if (list.scrollLeft >= list.scrollWidth / 2) {
+        list.scrollLeft = 0;
+      }
+    }
+    animationFrameId = requestAnimationFrame(autoScroll);
+  }
+
+  list.addEventListener('mouseenter', () => {
+    isHovering = true;
+  });
+
+  list.addEventListener('mouseleave', () => {
+    isHovering = false;
+  });
+
+  list.addEventListener('scroll', () => {
+    isUserScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isUserScrolling = false;
+    }, 2000); // Pause for 2 seconds after manual scroll
+  });
+
+  autoScroll();
+});

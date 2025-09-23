@@ -797,13 +797,15 @@ main.loaded {
  * #clients 
  */
 
-.clients { margin-bottom: 15px; }
+.clients {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
 
 .clients-list {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 15px;
   margin: 0 -15px;
   padding: 25px;
   padding-bottom: 25px;
@@ -811,12 +813,27 @@ main.loaded {
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.clients-list:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .clients-item {
-  min-width: 50%;
   scroll-snap-align: start;
+  width: 120px;
+  margin: 0 15px;
 }
 
 .clients-item img {
@@ -1350,7 +1367,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   text-transform: capitalize;
   box-shadow: var(--shadow-3);
   z-index: 1;
-  transition: 0.4s ease;
+  transition: var(--transition-1);
 }
 
 .form-btn::before {
@@ -1360,7 +1377,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
-  transition: 0.4s ease;
+  transition: var(--transition-1);
 }
 
 .form-btn ion-icon { font-size: 16px; }
@@ -1413,8 +1430,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   /**
    * client
    */
-
-  .clients-item { min-width: calc(33.33% - 10px); }
 
 
 
@@ -1650,8 +1665,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     padding: 45px;
     scroll-padding-inline: 45px;
   }
-
-  .clients-item { min-width: calc(33.33% - 35px); }
 
 
 
@@ -2009,8 +2022,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .testimonials-item { min-width: calc(50% - 15px); }
 
   /* clients */
-
-  .clients-item { min-width: calc(25% - 38px); }
 
 
 
