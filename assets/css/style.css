@@ -345,6 +345,55 @@ main.loaded {
   transition: var(--transition-2);
 }
 
+.download-cv-btn {
+  position: relative;
+  width: 100%;
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-size: var(--fs-6);
+  text-transform: capitalize;
+  box-shadow: var(--shadow-3);
+  z-index: 1;
+  transition: box-shadow 0.4s ease;
+  margin-top: 15px;
+}
+
+.download-cv-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--eerie-black-1);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.download-cv-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-gradient-yellow-1);
+  border-radius: inherit;
+  opacity: 0;
+  z-index: -2;
+  transition: opacity 0.5s ease;
+}
+
+.download-cv-btn:hover {
+  box-shadow: var(--shadow-4);
+}
+
+.download-cv-btn:hover::after {
+  opacity: 1;
+}
+
+.download-cv-btn ion-icon { font-size: 18px; }
+
 .sidebar.active { max-height: 405px; }
 
 .sidebar-info {
@@ -352,7 +401,7 @@ main.loaded {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .avatar-box {
@@ -424,7 +473,7 @@ main.loaded {
 .contacts-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 10px;
 }
 
 .contact-item {
@@ -1741,6 +1790,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar, article { width: 700px; }
 
+  .download-cv-btn {
+    margin-top: 20px;
+  }
+
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
 
@@ -2115,6 +2168,9 @@ textarea.form-input::-webkit-resizer { display: none; }
     height: 100%;
     margin-bottom: 0;
     padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 1;
   }
 
