@@ -1931,7 +1931,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--jet);
+  background: var(--onyx);
   border-radius: inherit;
   z-index: -1;
 }
