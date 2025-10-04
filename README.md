@@ -1,69 +1,55 @@
-# وب‌سایت رزومه شخصی | Personal Portfolio Website
+# وب‌سایت 
+ویا و ویترینی برای نمایش پروژه‌ها، مهارت‌ها و تجربیاتم عمل می‌کند و به دو زبان فارسی و انگلیسی در دسترس است.
 
-این مخزن کد منبع وب‌سایت شخصی من است که به عنوان رزومه و نمونه کار آنلاین عمل می‌کند.
 
-This is the source code repository for my personal website, which serves as an online resume and portfolio.
-
+**🚀 مشاهده نسخه زنده (Live Demo)**
 ---
 
 <div dir="rtl">
 
-## 🇮🇷 وب‌سایت رزومه شخصی راستین علیزاده
+## 🇮🇷 معرفی فنی پروژه
+این پروژه یک وب‌سایت استاتیک با معماری مشابه اپلیکیشن‌های تک‌صفحه‌ای (SPA-like) است که با استفاده از جاوا اسکریپت خالص (Vanilla JS) برای مدیریت حالت و ناوبری توسعه یافته است. طراحی سایت با رویکرد **Mobile-First** انجام شده و کاملاً واکنش‌گرا (Responsive) است.
 
-این پروژه یک وب‌سایت رزومه شخصی و نمونه کار است که با هدف نمایش مهارت‌ها، تجربیات و پروژه‌های من به صورت آنلاین طراحی و پیاده‌سازی شده است. این وب‌سایت کاملاً واکنش‌گرا بوده و در دو زبان فارسی و انگلیسی در دسترس است.
+### ✨ ویژگی‌های کلیدی
+- **معماری تک‌صفحه‌اروان ی زوبal):** ارائه محتوا به دو زبان فارسی و انگلیسی با قابلیت انتخاب توسط کاربر در اولین بازدید.- **سیستم فیلترینگ داینامik:** فیلتر کردن نمونه‌کارها بر اساس دسته‌بندی‌های مختلف به صورت آنی.
+ات پروژه‌ها و مقالات وبلاگ در پنجره‌های مودال بدون ترک صفحه اصلی.
+- **انیمیشن‌های ورودی (Scroll-Reveal):** استفاده از `IntersectionObserver` برای پیاده‌سازی انیمیشن‌های اسکرول و بارگذاری تدریجی محتوا جهت بهبود تجربه کاربری.
+- **فرم تماس با API:** فرم تماس با اعتبارسنجی سمت کلاینت و ارسال مستقیم پیام به API تلگرام.
+- **یکون‌ها**      | *   G       || **کنترل نسخه** | Git & GitHub                                    |
 
-### ✨ ویژگی‌ها
+### 📂 ساختار پروژه
 
-- **دو زبانه (فارسی و انگلیسی):** با یک پاپ‌آپ انتخاب زبان در اولین بازدید.
-- **طراحی واکنش‌گرا:** نمایش بهینه در دستگاه‌های مختلف (دسکتاپ، تبلت و موبایل).
-- **بخش‌های مختلف:** شامل «درباره من»، «رزومه»، «نمونه کارها»، «وبلاگ» و «تماس با من».
-- **فیلتر پیشرفته نمونه کارها:** قابلیت فیلتر کردن پروژه‌ها بر اساس دسته‌بندی.
-- **مودال‌های تعاملی:** نمایش جزئیات بیشتر برای هر نمونه کار و پست وبلاگ در یک مودال.
-- **انیمیشن‌های جذاب:** استفاده از انیمیشن‌های `scroll-reveal` برای بارگذاری پویای محتوا.
-- **فرم تماس:** فرم تماس با قابلیت ارسال پیام مستقیم به تلگرام.
+```rndex.html             # نسخه فارسی (صفحه اصلی)
+└── README.md
+```
 
-### 🛠️ تکنولوژی‌های استفاده شده
 
-- **فرانت‌اند:** HTML5, CSS3, JavaScript (Vanilla JS)
-- **آیکون‌ها:** Ionicons
-- **هاست:** GitHub Pages
+---
+<div dir="ltr">
 
-### 🚀 مشاهده آنلاین
 
-برای مشاهده نسخه زنده وب‌سایت، به آدرس زیر مراجعه کنید:
+This project is a static website with an SPA-like architecture, developed using Vanilla JavaScript for state management and navigation. It is designed with a **Mobile-First** approach and is fully responsive.
+- **SPA-like Architecture:** Smooth navigation between sections without page reloads.
+- **Bilingual Support:** Content is available in both Persian and English, with a language selection prompt on the user's first visit.
+- **Dynamic Filtering System:** Instantly filter portfolio items based on various categories.
+- **Interactive Modals:** View project details and blog posts in modals without leaving the main page.
+- **Scroll-Reveal Animations:** Utilizes the `IntersectionObserver` API to implement on-scroll animations and lazy loading for an enhanced user experience.
+- **API-Powered Contact Form:** Features client-side validation and - **Responsive Design:** Optimized for all devices, from mobile and tablets to wide-screen desktops.
 
-**https://raastin.github.io/**
+| Category      | Tool / Technology                               |
+|---------------|-------------------------------------------------|
+| **Icons**       | Ionicons           |
+| **Deployment**  | GitHub Pages       |
+| **Vers
+
+```
+raAstIN.github.io/
+├── en─ ass─s
+
+└── README.md
+```
 
 </div>
 
 ---
 
-<div dir="ltr">
-
-## 🇬🇧 Rastin Alizadeh's Personal Portfolio Website
-
-This project is a personal resume and portfolio website, designed and implemented to showcase my skills, experiences, and projects online. The website is fully responsive and available in both Persian and English.
-
-### ✨ Features
-
-- **Bilingual (Persian & English):** With a language selection popup on the first visit.
-- **Responsive Design:** Optimized for display on various devices (desktop, tablet, and mobile).
-- **Multiple Sections:** Includes "About Me," "Resume," "Portfolio," "Blog," and "Contact Me."
-- **Advanced Portfolio Filtering:** Ability to filter projects by category.
-- **Interactive Modals:** Display more details for each portfolio item and blog post in a modal.
-- **Engaging Animations:** Uses `scroll-reveal` animations for dynamic content loading.
-- **Contact Form:** A contact form that sends messages directly to Telegram.
-
-### 🛠️ Technologies Used
-
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla JS)
-- **Icons:** Ionicons
-- **Hosting:** GitHub Pages
-
-### 🚀 Live Demo
-
-To view the live version of the website, visit the following address:
-
-**https://raastin.github.io/**
-
-</div>
