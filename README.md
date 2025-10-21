@@ -1,13 +1,8 @@
 # وب‌سایت نمونه کار شخصی | Personal Portfolio Website
 
-[!Deployment](https://github.com/raAstIN/raAstIN.github.io/deployments/activity_log?environment=github-pages)
-[!License: MIT](https://opensource.org/licenses/MIT)
-
 این مخزن، کد منبع وب‌سایت نمونه کار شخصی من است. این پروژه به عنوان یک رزومه آنلاین پویا و ویترینی برای نمایش پروژه‌ها، مهارت‌ها و تجربیاتم عمل می‌کند و به دو زبان فارسی و انگلیسی در دسترس است.
 
 This repository contains the source code for my personal portfolio website. It serves as a dynamic online resume and a showcase for my projects, skills, and experiences, available in both Persian and English.
-
-**🚀 مشاهده نسخه زنده (Live Demo)**
 
 ---
 
