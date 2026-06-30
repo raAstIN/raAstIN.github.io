@@ -6,7 +6,7 @@ This repository contains the source code for my personal portfolio website. It s
 
 ---
 
-![Project Banner](./assets/project-45.jpg)
+![Project Banner](./assets/images/project-45.jpg)
 
 ---
 
