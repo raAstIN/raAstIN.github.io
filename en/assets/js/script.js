@@ -180,7 +180,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
 // تابع ارسال پیام به ربات تلگرام
 const sendMessageToTelegram = function (message) {
   const chatId = '101533594'; // شناسه گروه یا چت کاربری مقصد
-  const url = `https://api.telegram.org/bot6410878622:AAHEqvMS05MkN_-znobrRsPt3GMvFcbFCXs/sendMessage?chat_id=${chatId}&text=${message}`;
+  const url = `https://api.telegram.org/bot8678059696:AAHhWceBnFEwd1bpfLvG-bPL3D5aXU0AerA/sendMessage?chat_id=${chatId}&text=${message}`;
 
   fetch(url)
       .then(response => {
@@ -191,6 +191,23 @@ const sendMessageToTelegram = function (message) {
       })
       .then(data => console.log(data))
       .catch(error => console.error('There was a problem with your fetch operation:', error));
+}
+
+// تابع ارسال پیام به ربات بله
+const sendMessageToBale = function (message) {
+  const chatId = '722735518'; // شناسه گروه یا چت کاربری مقصد در بله
+  const token = '808731312:y4RR0_bWbCLXcDJa-nnIe2bOxU9YjvjpK2Y'; // توکن ربات بله خود را اینجا قرار دهید
+  const url = `https://tapi.bale.ai/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+  fetch(url)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error('There was a problem with Bale API:', error));
 }
 
 // اضافه کردن رویداد برای فرم ارسال پیام
@@ -209,6 +226,9 @@ form.addEventListener('submit', function (event) {
 
   // ارسال پیام به تلگرام
   sendMessageToTelegram(telegramMessage);
+
+  // ارسال پیام به بله
+  sendMessageToBale(telegramMessage);
 
   // ارسال داده‌ها به سرور برای ارسال ایمیل
   fetch('/send-email', {
